@@ -6,6 +6,25 @@ body {
     font-family: 'Comfortaa', cursive;
     margin: 0px;
     color: var(--text-color);
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--text-color);
+    text-align: left;
+}
+
+input {
+    outline: none;
+    border: none;
+    /*transparent color*/
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--text-color);
+    width: 100%;
 }
 
 #navigationBar ul {
@@ -26,12 +45,12 @@ body {
     text-decoration: none;
 }
 
-#navigationBar li #active {
+#navigationBar li #navActive {
     background-color: var(--active);
     color: var(--text-color-dark);
 }
 
-#navigationBar li a:hover:not(#active) {
+#navigationBar li a:hover:not(#navActive) {
     background-color: var(--primary-2);
 }
 
@@ -41,14 +60,54 @@ body {
     }
 }
 
-#fileList {
+#mainScreen {
     height: 100vh;
     margin-left: 25%;
-    background-color: var(--background-color);
+    overflow: auto;
 }
 
 @media screen and (max-width: 700px) {
-    #fileList {
+    #mainScreen {
         margin-left: 175px;
     }
+}
+
+#topBar {
+    height: 2em;
+    background-color: var(--primary-1);
+    margin-top: 0px;
+}
+
+#topBar input {
+    height: 100%;
+    width: calc(100% - 2.75em);
+}
+
+#topBar button {
+    text-align: center;
+    background-color: var(--attention);
+    color: var(--text-color);
+    height: 2em;
+    width: 2em;
+}
+
+#fileList {
+    height: calc(100% - 2em);
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    background-color: var(--background-color);
+}
+
+#fileList p {
+    margin-top: 0px;
+}
+
+#fileList button {
+    width: 100%;
+    font-size: 16px;
+}
+
+#fileList button:hover {
+    background-color: var(--primary-2);
+    color: var(--text-color);
 }

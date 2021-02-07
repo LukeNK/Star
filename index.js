@@ -1,5 +1,9 @@
-const { app, BrowserWindow } = require('electron')
-const fs = require('fs')
+"use strict";
+
+const { app, BrowserWindow, ipcMain } = require('electron');
+const fs = require('fs');
+const path = require("path");
+const misc = require('./backend/misc');
 
 let currentDirectory = {
     finishLoad: true, //if the data loading completed
@@ -12,8 +16,8 @@ let win; //windows
 app.whenReady().then(() => {
     //create window
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 400,
         transparent: true,
         frame: false,
         webPreferences: {
@@ -21,20 +25,33 @@ app.whenReady().then(() => {
         }
     })
     win.loadFile('./index.html');
-
-    listDirectory('./', () => {})
-
-    win.webContents.on('did-finish-load', () => {
-        listDirectory('./', (data) => {
-            let res = '',
-                l1 = 0
-            for (; l1 < data.length; l1++) {
-                res += data[l1] + '/*/';
-            }
-            win.webContents.send('currentDirectoryContent', res.substr(0, res.length - 3));
-        })
-    })
+    win.webContents.on('did-finish-load', windowReady)
 })
+
+function windowReady() {
+    //all listener
+    //#region init
+    listDirectory('./', (files) => {
+        win.webContents.send('sendDirContent', misc.arr2str(files))
+    });
+    win.webContents.send('sendCurrentDir', path.resolve('./'));
+    //#endregion
+
+    //#region dir listener
+    ipcMain.on('getDirContent', (event, path) => {
+        listDirectory(path, (files) => {
+            win.webContents.send('sendDirContent', misc.arr2str(files))
+        })
+    });
+    ipcMain.on('window', (event, command) => {
+        switch (command) {
+            case 'close':
+                try { win.close(); } catch (err) {}
+                break;
+        }
+    });
+    //#endregion
+}
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -45,12 +62,13 @@ app.on('window-all-closed', () => {
 function listDirectory(path, callback) {
     currentDirectory.finishLoad = false;
     fs.readdir(path, (err, files) => {
-        currentDirectory.content = files;
-        let l1 = 0
+        if (err) throw err;
+        //currentDirectory.content = files;
+        let l1 = 0;
         for (; l1 < files.length; l1++) {
-            currentDirectory.contentType[l1] = fs.lstatSync(files[l1]).isDirectory();
+            //currentDirectory.contentType[l1] = fs.lstatSync(files[l1]).isDirectory();
         }
-        currentDirectory.finishLoad = true;
+        //currentDirectory.finishLoad = true;
         callback(files);
     });
 }
