@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    margin: 0px;
+    color: var(--text-color);
+}
+
+#navigationBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: var(--primary-1);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#navigationBar li a {
+    display: block;
+    color: var(--text-color);
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#navigationBar li #active {
+    background-color: var(--active);
+    color: var(--text-color-dark);
+}
+
+#navigationBar li a:hover:not(#active) {
+    background-color: var(--primary-2);
+}
+
+@media screen and (max-width: 700px) {
+    #navigationBar ul {
+        width: 175px;
+    }
+}
+
+#fileList {
+    height: 100vh;
+    margin-left: 25%;
+    background-color: var(--background-color);
+}
+
+@media screen and (max-width: 700px) {
+    #fileList {
+        margin-left: 175px;
+    }
+}

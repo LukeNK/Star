@@ -1,0 +1,11 @@
+:root {
+    --background-color: rgba(11, 19, 43, 1);
+    --primary-1: rgba(28, 37, 65, 0.5);
+    --primary-2: #3a506bff;
+    --maximum-blue-green: #5bc0beff;
+    --text-color: #f9f9f9;
+    --text-color-dark: #0f0f0f;
+    --active: #6fffe9ff;
+    --lavender-blush: #f6e8eaff;
+    --attention: #fb3640ff;
+}
