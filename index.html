@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./config/color.css">
     <link rel="stylesheet" href="./page/style.css">
+    <script src="./page/misc.js"></script>
     <script src="./page/script.js"></script>
     <script src="./page/api.js"></script>
     <script src="./page/display.js"></script>
@@ -18,9 +19,9 @@
 <body>
     <div id="navigationBar">
         <ul>
-            <li><a href="">Bla</a></li>
+            <li><a id="navInActive" onclick="goUpPath()">Bla</a></li>
             <li>
-                <a id="navActive" href="./">Bla</a>
+                <a id="navActive" href="#"></a>
             </li>
         </ul>
     </div>
@@ -30,7 +31,7 @@
             <button onclick="sendData('window', 'close')">X</button>
         </div>
         <div id="fileList">
-            <a href="javascript:location.reload(true)">Refresh this Page</a>
+            Loading...
         </div>
     </div>
 </body>

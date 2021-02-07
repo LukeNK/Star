@@ -5,12 +5,6 @@ const fs = require('fs');
 const path = require("path");
 const misc = require('./backend/misc');
 
-let currentDirectory = {
-    finishLoad: true, //if the data loading completed
-    content: [],
-    contentType: []
-}
-
 let win; //windows
 
 app.whenReady().then(() => {
@@ -30,14 +24,12 @@ app.whenReady().then(() => {
 
 function windowReady() {
     //all listener
-    //#region init
-    listDirectory('./', (files) => {
-        win.webContents.send('sendDirContent', misc.arr2str(files))
-    });
+    //#region init    
     win.webContents.send('sendCurrentDir', path.resolve('./'));
     //#endregion
 
     //#region dir listener
+
     ipcMain.on('getDirContent', (event, path) => {
         listDirectory(path, (files) => {
             win.webContents.send('sendDirContent', misc.arr2str(files))
@@ -60,15 +52,13 @@ app.on('window-all-closed', () => {
 })
 
 function listDirectory(path, callback) {
-    currentDirectory.finishLoad = false;
     fs.readdir(path, (err, files) => {
         if (err) throw err;
-        //currentDirectory.content = files;
-        let l1 = 0;
-        for (; l1 < files.length; l1++) {
-            //currentDirectory.contentType[l1] = fs.lstatSync(files[l1]).isDirectory();
-        }
-        //currentDirectory.finishLoad = true;
+        //let l1 = 0;
+        //let type = []
+        //for (; l1 < files.length; l1++) {
+        //type[l1] = fs.lstatSync(files[l1]).isDirectory();
+        //}
         callback(files);
     });
 }
