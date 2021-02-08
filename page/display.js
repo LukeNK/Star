@@ -9,14 +9,21 @@ function goUpPath() {
     pathUpdate(pathFix(res.substr(0, res.length - 1)));
 }
 
+function goDownPath(path) {
+    let c = isWindowsFS(currentDirectory.path);
+    let sep = (c) ? '\\' : '/';
+    sep = (isAlpha(currentDirectory.path[currentDirectory.path.length - 1])) ? sep : '';
+    pathUpdate(currentDirectory.path + sep + path);
+}
+
 function pathUpdate(path) {
     path = pathFix(path);
     currentDirectory.path = path;
     document.getElementById('pathInput').value = path;
-    getFolder(path)
     document.getElementById('navActive').innerHTML = getFolder(path);
     let trimPath = path.split(/\/|\\/);
-    document.getElementById('navInActive').innerHTML = trimPath[trimPath.length - 2]
+    document.getElementById('navInActive').innerHTML =
+        (isRoot(path)) ? '' : trimPath[trimPath.length - 2];
     contentUpdate();
 }
 

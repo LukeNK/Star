@@ -29,10 +29,9 @@ function windowReady() {
     //#endregion
 
     //#region dir listener
-
     ipcMain.on('getDirContent', (event, path) => {
-        listDirectory(path, (files) => {
-            win.webContents.send('sendDirContent', misc.arr2str(files))
+        listDirectory(path, (files, fType) => {
+            win.webContents.send('sendDirContent', misc.arr2str(files), misc.arr2str(fType))
         })
     });
     ipcMain.on('window', (event, command) => {
@@ -54,11 +53,14 @@ app.on('window-all-closed', () => {
 function listDirectory(path, callback) {
     fs.readdir(path, (err, files) => {
         if (err) throw err;
-        //let l1 = 0;
-        //let type = []
-        //for (; l1 < files.length; l1++) {
-        //type[l1] = fs.lstatSync(files[l1]).isDirectory();
-        //}
-        callback(files);
+        let l1 = 0;
+        let type = []
+        let sep = (misc.isWindowsFS(path)) ? '\\' : '/'
+        for (; l1 < files.length; l1++) {
+            try {
+                type[l1] = (fs.lstatSync(`${path + sep + files[l1]}`).isDirectory()) ? 'd' : 'f';
+            } catch (err) { type[l1] = 'e' }
+        }
+        callback(files, type);
     });
 }

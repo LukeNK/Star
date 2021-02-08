@@ -6,5 +6,6 @@ module.exports = {
             res += arr[l1] + '/*/';
         }
         return res.substr(0, res.length - 3)
-    }
+    },
+    isWindowsFS: (path) => { return path.includes('\\') }
 }

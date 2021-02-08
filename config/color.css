@@ -6,6 +6,7 @@
     --text-color-dark: #0f0f0f;
     --active: #6fffe9ff;
     --secondary-1: #5bc0beff;
-    --lavender-blush: #f6e8eaff;
+    --secondary-2: #f6e8eaff;
+    /*--secondary-2-transparent: rgba(246, 232, 234, 0.75);*/
     --attention: #fb3640ff;
 }
