@@ -1,8 +1,7 @@
 "use strict";
 
 let currentDirectory = {
-    path: './',
-    windowsFS: false
+    path: './'
 }
 
 function isAlpha(str) { return /^[a-zA-Z() ]+$/.test(str) }

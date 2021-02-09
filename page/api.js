@@ -2,6 +2,7 @@
 const { ipcRenderer, shell } = require('electron')
 
 ipcRenderer.on('sendCurrentDir', (event, path) => {
+
     pathUpdate(path);
 })
 
@@ -18,7 +19,8 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
             //if error
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
-            button.setAttribute('onclick', `shell.openPath('${message[l1]}')`); //edit this for cross-platform
+            let cdPath = currentDirectory.path;
+            button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); //edit this for cross-platform
         } else if (fType[l1] == 'd') {
             //id directory
             button.style.color = 'var(--secondary-1)';
@@ -29,10 +31,10 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     }
 
     //handle display scoll
+    document.documentElement.scrollTop = 0;
     document.getElementById('mainScreen').style.height = `calc(${l1+1} * 1.5em + 1em)`;
     if (document.getElementById('mainScreen').clientHeight < document.documentElement.clientHeight) {
         document.getElementById('mainScreen').style.height = `100vh`;
-        console.log('a')
     }
 })
 
