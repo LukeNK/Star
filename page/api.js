@@ -1,5 +1,5 @@
 "use strict";
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, shell } = require('electron')
 
 ipcRenderer.on('sendCurrentDir', (event, path) => {
     pathUpdate(path);
@@ -7,7 +7,7 @@ ipcRenderer.on('sendCurrentDir', (event, path) => {
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
     let element = document.getElementById('fileList');
-    element.innerHTML = '<a href="javascript:location.reload(true)">Refresh this Page</a>'; //remove later
+    element.innerHTML = ''; //clear content
     message = message.split('/*/');
     fType = fType.split('/*/');
     let l1 = 0;
@@ -15,8 +15,12 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         let button = document.createElement('button');
         button.innerHTML = message[l1];
         if (fType[l1] == 'e') {
+            //if error
             button.style.color = 'var(--attention)'
+        } else if (fType[l1] == 'f') {
+            button.setAttribute('onclick', `shell.openPath('${message[l1]}')`); //edit this for cross-platform
         } else if (fType[l1] == 'd') {
+            //id directory
             button.style.color = 'var(--secondary-1)';
             button.setAttribute('onclick', `goDownPath('${message[l1]}')`);
         };
@@ -24,10 +28,11 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         element.appendChild(button);
     }
 
-    if (document.getElementById('fileList').scrollHeight > document.getElementById('fileList').clientHeight) {
-        document.getElementById('fileList').style.height = `calc(${l1+1} * 1.5em + 2px)`;
-    } else {
-        document.getElementById('fileList').style.height = 'calc(100% - 2em)';
+    //handle display scoll
+    document.getElementById('mainScreen').style.height = `calc(${l1+1} * 1.5em + 1em)`;
+    if (document.getElementById('mainScreen').clientHeight < document.documentElement.clientHeight) {
+        document.getElementById('mainScreen').style.height = `100vh`;
+        console.log('a')
     }
 })
 

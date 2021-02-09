@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./config/color.css">
     <link rel="stylesheet" href="./page/style.css">
     <script src="./page/misc.js"></script>
-    <script src="./page/script.js"></script>
     <script src="./page/api.js"></script>
     <script src="./page/display.js"></script>
 
@@ -28,7 +27,8 @@
     <div id="mainScreen">
         <div id="topBar">
             <input id="pathInput">
-            <button onclick="sendData('window', 'close')">X</button>
+            <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh">R</button>
+            <button onclick="sendData('window', 'close')" id="topBarClose">X</button>
         </div>
         <div id="fileList">
             Loading...

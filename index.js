@@ -25,7 +25,7 @@ app.whenReady().then(() => {
 function windowReady() {
     //all listener
     //#region init    
-    win.webContents.send('sendCurrentDir', path.resolve('./'));
+    win.webContents.send('sendCurrentDir', path.resolve('./').replace(/\\/g, '/'));
     //#endregion
 
     //#region dir listener
@@ -52,13 +52,14 @@ app.on('window-all-closed', () => {
 
 function listDirectory(path, callback) {
     fs.readdir(path, (err, files) => {
-        if (err) throw err;
+        if (err) {}; //need error handling
         let l1 = 0;
         let type = []
-        let sep = (misc.isWindowsFS(path)) ? '\\' : '/'
         for (; l1 < files.length; l1++) {
+            //d: directory, f: file, e: error;
+
             try {
-                type[l1] = (fs.lstatSync(`${path + sep + files[l1]}`).isDirectory()) ? 'd' : 'f';
+                type[l1] = (fs.lstatSync(`${path + ((path[path.length - 1] == '/') ? '' : '/') + files[l1]}`).isDirectory()) ? 'd' : 'f';
             } catch (err) { type[l1] = 'e' }
         }
         callback(files, type);
