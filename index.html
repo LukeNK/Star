@@ -18,7 +18,9 @@
 <body>
     <div id="navigationBar">
         <ul>
-            <li><a id="navInActive" onclick="goUpPath()">Bla</a></li>
+            <li>
+                <a id="navInActive" onclick="goUpPath()"></a>
+            </li>
             <li>
                 <a id="navActive" href="#"></a>
             </li>
@@ -27,8 +29,9 @@
     <div id="mainScreen">
         <div id="topBar">
             <input id="pathInput">
-            <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh">R</button>
+            <!--IDK why but we have to swap possition of 2 buttons-->
             <button onclick="sendData('window', 'close')" id="topBarClose">X</button>
+            <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh"></button>
         </div>
         <div id="fileList">
             Loading...

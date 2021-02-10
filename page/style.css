@@ -97,22 +97,41 @@ input {
 
 #topBar input {
     height: 100%;
-    width: calc(100% - 4.75em);
+    width: calc(100% - 8em);
 }
 
 #topBar button {
     text-align: center;
+    float: right;
     color: var(--text-color);
-    height: 2em;
-    width: 2em;
+    margin-right: 0px;
+    margin-top: 0px;
+    height: 100%;
+    width: 3em;
 }
 
-#topBarClose:hover {
-    background-color: var(--attention);
+#topBarRefresh {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    background-image: url(./refresh.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #topBarRefresh:hover {
     background-color: var(--secondary-1);
+}
+
+#topBarClose {
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+#topBarClose:hover {
+    background-color: var(--attention);
 }
 
 #fileList {

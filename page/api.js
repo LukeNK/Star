@@ -2,7 +2,6 @@
 const { ipcRenderer, shell } = require('electron')
 
 ipcRenderer.on('sendCurrentDir', (event, path) => {
-
     pathUpdate(path);
 })
 
