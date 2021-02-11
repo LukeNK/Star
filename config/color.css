@@ -1,0 +1,19 @@
+:root {
+    /*Background color*/
+    --background-color: rgba(11, 19, 43, 0.75);
+    /*Main view color (Navigation bar)*/
+    --primary-1: rgba(28, 37, 65, 0.5);
+    /*Hover color*/
+    --primary-2: #3a506bff;
+    /*Text color*/
+    --text-color: #f9f9f9;
+    --text-color-inverted: #0f0f0f;
+    /*Active elements*/
+    --active: #6fffe9ff;
+    /*Highlight color*/
+    --secondary-1: #5bc0beff;
+    /*Separator color*/
+    --secondary-2: #f6e8eaff;
+    /*Warning color*/
+    --attention: #fb3640ff;
+}

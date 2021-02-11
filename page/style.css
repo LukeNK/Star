@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    margin: 0px;
+    color: var(--text-color);
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-left: 1px solid var(--secondary-2);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: var(--secondary-2);
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-1);
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--text-color);
+    text-align: left;
+}
+
+input {
+    outline: none;
+    border: none;
+    /*transparent color*/
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--text-color);
+    width: 100%;
+}
+
+#navigationBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: var(--primary-1);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#navigationBar li a {
+    display: block;
+    color: var(--text-color);
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#navigationBar li #navActive {
+    background-color: var(--active);
+    color: var(--text-color-inverted);
+}
+
+#navigationBar li a:hover:not(#navActive) {
+    background-color: var(--primary-2);
+}
+
+@media screen and (max-width: 700px) {
+    #navigationBar ul {
+        width: 175px;
+    }
+}
+
+#mainScreen {
+    height: 100vh;
+    margin-left: 25%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    #mainScreen {
+        margin-left: 175px;
+    }
+}
+
+#topBar {
+    height: 2em;
+    background-color: var(--primary-1);
+    margin-top: 0px;
+}
+
+#topBar input {
+    height: 100%;
+    width: calc(100% - 8em);
+}
+
+#topBar button {
+    text-align: center;
+    float: right;
+    color: var(--text-color);
+    margin-right: 0px;
+    margin-top: 0px;
+    height: 100%;
+    width: 3em;
+}
+
+#topBarRefresh {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    background-image: url(./refresh.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#topBarRefresh:hover {
+    background-color: var(--secondary-1);
+}
+
+#topBarClose {
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+#topBarClose:hover {
+    background-color: var(--attention);
+}
+
+#fileList {
+    height: calc(100% - 2em);
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    background-color: var(--background-color);
+}
+
+#fileList p {
+    margin-top: 0px;
+}
+
+#fileList button {
+    width: 100%;
+    height: 1.5em;
+    font-size: 16px;
+}
+
+#fileList button:hover {
+    background-color: var(--primary-2);
+    color: var(--text-color);
+}
