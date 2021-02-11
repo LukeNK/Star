@@ -19,9 +19,7 @@
         "url": "https://github.com/LukeNk/Star/issues"
     },
     "homepage": "https://github.com/LukeNk/Star#readme",
-    "dependencies": {
-        "electron-squirrel-startup": "^1.0.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@electron-forge/cli": "^6.0.0-beta.54",
         "@electron-forge/maker-deb": "^6.0.0-beta.54",
@@ -34,7 +32,8 @@
     "config": {
         "forge": {
             "packagerConfig": {},
-            "makers": [{
+            "makers": [
+                {
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
                         "name": "star"
