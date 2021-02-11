@@ -16,7 +16,7 @@ I'm researching the way to port into MacOS and and Linux, but...
 However, all of the source code was built with cross-platform philosophy, so the process will be really quick if I can fix those issue.
 
 # Todo
-- [x] API for get currentDir, dirContentz
+- [x] API for get currentDir, dirContents
 - [ ] Refresh button 
     - [x] Fix refresh bug
     - [x] Icon
