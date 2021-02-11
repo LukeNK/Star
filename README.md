@@ -6,7 +6,7 @@ A lightweight ~~cross-platform~~ file manager focus on simple design.
 Version v1.0.0 development
 
 # Todo
-- [x] API for get currentDir, dirContent
+- [x] API for get currentDir, dirContentz
 - [ ] Refresh button 
     - [x] Fix refresh bug
     - [ ] Icon
@@ -16,6 +16,7 @@ Version v1.0.0 development
 - [ ] Actions (move, copy, delete)
 - [ ] Navigation pannel
 - [ ] Test on UNIX filesystem
+- [x] Cross-plaform by using electron-builer
 - [ ] Accept input in `<input id="pathInput">`
 
 ## Channel naming
