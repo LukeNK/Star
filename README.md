@@ -1,5 +1,5 @@
 # Star
-A lightweight ~~cross-platform~~ file manager focus on simple design.
+A lightweight ~~cross-platform~~ file manager focus on simple design. Currently in active development.
 
 ## Usage
 Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature will be add soon
