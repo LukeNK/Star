@@ -27,7 +27,10 @@ However, all of the source code was built with cross-platform philosophy, so the
 - [ ] Navigation pannel
 - [ ] Test on UNIX filesystem
 - [x] Cross-plaform by using electron-builer
-- [ ] Accept input in `<input id="pathInput">`
+- [ ] User folder
+    - [ ] LastSession
+- [ ] Accept input in `<input id="pathInput">` \
+**Doing:** User last session (./user/)
 
 ## Channel naming
 Each channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`

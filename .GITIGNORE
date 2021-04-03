@@ -3,4 +3,4 @@ out
 dist
 build-script.bat
 
-./user/
+user

@@ -7,6 +7,10 @@ const misc = require('./backend/misc');
 
 let win; //windows
 
+let user = {
+    path: "./"
+}
+
 app.whenReady().then(() => {
     //create window
     win = new BrowserWindow({
@@ -24,8 +28,14 @@ app.whenReady().then(() => {
 
 function windowReady() {
     //all listener
-    //#region init    
-    win.webContents.send('sendCurrentDir', path.resolve('./').replace(/\\/g, '/'));
+    //#region init
+    fs.readFile('./user/lastSessionPath', "utf8", (err, data) => {
+        //console.log(data)
+        if (err) user.path = "./"
+        else user.path = data;
+        win.webContents.send('sendCurrentDir', path.resolve(user.path).replace(/\\/g, '/'));
+    })
+
     //#endregion
 
     //#region dir listener
@@ -33,11 +43,16 @@ function windowReady() {
         listDirectory(path, (files, fType) => {
             win.webContents.send('sendDirContent', misc.arr2str(files), misc.arr2str(fType))
         })
+        user.path = path;
+        fs.writeFile('./user/lastSessionPath', user.path, (err) => {
+            if (err) console.log(err)
+        })
     });
     ipcMain.on('window', (event, command) => {
         switch (command) {
             case 'close':
                 try { win.close(); } catch (err) {}
+                //fs.writeFileSync('./user/lastSessionPath', user.path)
                 break;
         }
     });
