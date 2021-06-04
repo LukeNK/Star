@@ -19,7 +19,9 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
             let cdPath = currentDirectory.path;
-            button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); //edit this for cross-platform
+            button.setAttribute('onclick', `this.style.backgroundColor = 'var(--primary-2)'`);
+            button.setAttribute('onmousemove', `this.style.backgroundColor = 'var((--primary-2)'`);
+            //button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); //edit this for cross-platform
         } else if (fType[l1] == 'd') {
             //id directory
             button.style.color = 'var(--secondary-1)';

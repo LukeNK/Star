@@ -30,7 +30,6 @@ function windowReady() {
     //all listener
     //#region init
     fs.readFile('./user/lastSessionPath', "utf8", (err, data) => {
-        //console.log(data)
         if (err) user.path = "./"
         else user.path = data;
         win.webContents.send('sendCurrentDir', path.resolve(user.path).replace(/\\/g, '/'));
@@ -52,7 +51,6 @@ function windowReady() {
         switch (command) {
             case 'close':
                 try { win.close(); } catch (err) {}
-                //fs.writeFileSync('./user/lastSessionPath', user.path)
                 break;
         }
     });

@@ -28,7 +28,7 @@ However, all of the source code was built with cross-platform philosophy, so the
 - [ ] Test on UNIX filesystem
 - [x] Cross-plaform by using electron-builer
 - [ ] User folder
-    - [ ] LastSession
+    - [x] LastSession
 - [ ] Accept input in `<input id="pathInput">` \
 **Doing:** User last session (./user/)
 
