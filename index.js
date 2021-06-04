@@ -50,7 +50,8 @@ function windowReady() {
     ipcMain.on('window', (event, command) => {
         switch (command) {
             case 'close':
-                try { win.close(); } catch (err) {}
+                try { win.close(); } catch (err) {};
+                process.exit(0);
                 break;
         }
     });

@@ -1,5 +1,5 @@
 # Star
-A lightweight ~~cross-platform~~ file manager focus on simple design. Currently in active development.
+A lightweight ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development.
 
 ## Usage
 Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature will be add soon
@@ -16,6 +16,7 @@ I'm researching the way to port into MacOS and and Linux, but...
 However, all of the source code was built with cross-platform philosophy, so the process will be really quick if I can fix those issue.
 
 # Todo
+Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
 - [x] API for get currentDir, dirContents
 - [ ] Refresh button 
     - [x] Fix refresh bug
@@ -29,8 +30,12 @@ However, all of the source code was built with cross-platform philosophy, so the
 - [x] Cross-plaform by using electron-builer
 - [ ] User folder
     - [x] LastSession
-- [ ] Accept input in `<input id="pathInput">` \
-**Doing:** User last session (./user/)
-
+- [ ] Multi-media features
+    - [ ] Text editor
+    - [ ] Music player (easy with `<audio>` tag)
+        - [ ] Get files, play 
+        - [ ] Style controls
+    - [ ] Video player
+- [ ] Accept input in `<input id="pathInput">`
 ## Channel naming
 Each channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`

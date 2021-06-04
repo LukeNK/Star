@@ -15,6 +15,7 @@ function goDownPath(path) { //go __into child folder
 }
 
 function pathUpdate(path) {
+    highlightedItems = []; //clear highlight items
     path = pathFix(path);
     currentDirectory.path = path;
     document.getElementById('pathInput').value = path;
