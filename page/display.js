@@ -9,7 +9,7 @@ function goUpPath() { //go __back__ (..)
     pathUpdate(pathFix(res.substr(0, res.length - 1)));
 }
 
-function goDownPath(path) { //go __into child folder
+function goDownPath(path) { //go __into__ child folder
     let sep = (currentDirectory.path[currentDirectory.path.length - 1] == '/') ? '' : '/';
     pathUpdate(currentDirectory.path + sep + path);
 }

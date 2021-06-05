@@ -18,11 +18,11 @@ body {
     background: var(--background-color);
 }
 
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: var(--secondary-2);
 }
 
- ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-1);
 }
 
@@ -82,7 +82,7 @@ input {
 #topBar {
     z-index: 2;
     position: fixed;
-    left: 25vw;
+    left: 25%;
     top: 0;
     height: 2em;
     width: 75vw;
@@ -93,7 +93,7 @@ input {
 #topBar input {
     height: 100%;
     padding-right: 0;
-    padding-left: 0;
+    padding-left: 1em;
 }
 
 #topBar button {
@@ -150,9 +150,9 @@ input {
 
 #fileList {
     position: absolute;
-    top: 30px;
-    min-height: 100vh;
-    padding-left: 0.5em;
+    padding-top: 2.5em;
+    min-height: 100%;
+    width: 75%;
     background-color: var(--background-color);
     /* overflow-y: hidden; */
 }
@@ -165,6 +165,7 @@ input {
     width: 100%;
     min-height: 1.5em;
     font-size: 16px;
+    padding-left: 0.5em;
 }
 
 #fileList button:hover {

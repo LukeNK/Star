@@ -25,7 +25,7 @@ Most of item on this list are from my experience with other file explorer, but y
     - [x] Fix refresh bug
     - [x] Icon
     - [ ] SVG Icon instead of png
-- [ ] Fix newline error when file name is longer than the width
+- [x] Fix newline error when file name is longer than the width
 - [x] Fix clientHeight and scrollHeight bug. Problem can be reproduce by go from a larger folder to smaller folder
 - [ ] Actions (move, copy, delete)
 - [ ] Navigation pannel
@@ -33,13 +33,15 @@ Most of item on this list are from my experience with other file explorer, but y
 - [x] Cross-plaform by using electron-builer
 - [ ] User folder
     - [x] LastSession
-- [ ] Multi-media features
+- [ ] Multi-media features/ integrated app/ plugin
+    - [ ] Scan ./plugin
+    - [ ] Documentation
     - [ ] Text editor
     - [ ] Music player (easy with `<audio>` tag)
         - [ ] Get files, play 
         - [ ] Style controls
     - [ ] Video player
 - [ ] Accept input in `<input id="pathInput">`
-- [ ] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
+- [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
 ## Channel naming
 Each channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`
