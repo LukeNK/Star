@@ -20,6 +20,8 @@ However, all of the source code was built with cross-platform philosophy, so the
 
 # Todo
 Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
+- [ ] Actions (move, copy, delete) !ATTENTION!
+- [ ] Accept input in `<input id="pathInput">`
 - [x] API for get currentDir, dirContents
 - [ ] Refresh button 
     - [x] Fix refresh bug
@@ -27,7 +29,6 @@ Most of item on this list are from my experience with other file explorer, but y
     - [ ] SVG Icon instead of png
 - [x] Fix newline error when file name is longer than the width
 - [x] Fix clientHeight and scrollHeight bug. Problem can be reproduce by go from a larger folder to smaller folder
-- [ ] Actions (move, copy, delete)
 - [ ] Navigation pannel
 - [ ] Test on UNIX filesystem
 - [x] Cross-plaform by using electron-builer
@@ -41,7 +42,6 @@ Most of item on this list are from my experience with other file explorer, but y
         - [ ] Get files, play 
         - [ ] Style controls
     - [ ] Video player
-- [ ] Accept input in `<input id="pathInput">`
 - [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
 ## Channel naming
 Each channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`
