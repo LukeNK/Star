@@ -4,6 +4,15 @@ let currentDirectory = {
     path: './'
 }
 
+Array.prototype.remove = function(item) {
+    // remove every item in an array
+    let index = (this.indexOf(item) != -1) ? this.indexOf(item) : -1;
+    do {
+        this.splice(index, 1);
+        index = this.indexOf(item);
+    } while (index != -1);
+}
+
 function isAlpha(str) { return /^[a-zA-Z() ]+$/.test(str) }
 
 function isRoot(path) {

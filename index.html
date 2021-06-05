@@ -23,16 +23,16 @@
                 <a id="navActive" class="activeColor" href="#"></a>
             </li>
             <hr>
-            <li id="actionMenu"></li>
+            <li id="actionMenu" style="overflow-y: auto;"></li>
         </ul>
     </div>
+    <div id="topBar">
+        <input id="pathInput">
+        <!--IDK why but we have to swap possition of 2 buttons-->
+        <button onclick="sendData('window', 'close')" id="topBarClose">X</button>
+        <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh"></button>
+    </div>
     <div id="mainScreen">
-        <div id="topBar">
-            <input id="pathInput">
-            <!--IDK why but we have to swap possition of 2 buttons-->
-            <button onclick="sendData('window', 'close')" id="topBarClose">X</button>
-            <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh"></button>
-        </div>
         <div id="fileList">
             Loading...
         </div>

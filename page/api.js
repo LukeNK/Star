@@ -7,7 +7,7 @@ ipcRenderer.on('sendCurrentDir', (event, path) => {
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
     let element = document.getElementById('fileList');
-    element.innerHTML = ''; //clear content
+    element.innerHTML = ''; // clear content
     message = message.split('/*/');
     fType = fType.split('/*/');
     let l1 = 0;
@@ -15,12 +15,12 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         let button = document.createElement('button');
         button.innerHTML = message[l1];
         if (fType[l1] == 'e') {
-            //if error
+            // if error
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
             let cdPath = currentDirectory.path;
-            button.setAttribute('onclick', `this.style.backgroundColor = 'var(--primary-2)'`);
-            //button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); //edit this for cross-platform
+            button.setAttribute('onmousedown', `highlightItem(event, this.innerHTML, this);`); // change to onmousedown
+            //button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); // edit this for cross-platform
         } else if (fType[l1] == 'd') {
             //id directory
             button.style.color = 'var(--secondary-1)';

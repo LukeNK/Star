@@ -51,7 +51,6 @@ function windowReady() {
         switch (command) {
             case 'close':
                 try { win.close(); } catch (err) {};
-                process.exit(0);
                 break;
         }
     });
@@ -59,9 +58,9 @@ function windowReady() {
 }
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+    if (process.platform !== 'darwin')
         app.quit()
-    }
+
 })
 
 function listDirectory(path, callback) {

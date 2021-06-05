@@ -2,7 +2,10 @@
 A lightweight ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development.
 
 ## Usage
-Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature will be add soon
+Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature will be add soon.
+
+### How to use
+Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
 
 ## Screenshots
 ![alt text](https://cdn.discordapp.com/attachments/704502790055133245/808542256427958282/unknown.png)
@@ -37,5 +40,6 @@ Most of item on this list are from my experience with other file explorer, but y
         - [ ] Style controls
     - [ ] Video player
 - [ ] Accept input in `<input id="pathInput">`
+- [ ] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
 ## Channel naming
 Each channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`
