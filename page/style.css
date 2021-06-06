@@ -139,7 +139,7 @@ input {
 #mainScreen {
     margin-left: 25%;
     overflow-x: auto;
-    /* overflow-y: hidden; */
+    /* overflow-y: auto; */
 }
 
 @media screen and (max-width: 700px) {
@@ -171,6 +171,16 @@ input {
 #fileList button:hover {
     /* Due to unknown bug reason, background will be update using function in api.js */
     background-color: var(--primary-2);
+}
+
+
+/*Integrated app*/
+
+#txtEditor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 25vh;
 }
 
 

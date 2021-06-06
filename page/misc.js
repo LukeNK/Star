@@ -1,18 +1,24 @@
 "use strict";
 
+//#region Global variables
 let currentDirectory = {
     path: './'
 }
+let highlightedItems = []; // item that was highlighted with secondary click
+//#endregion
 
+//#region Prototypes
 Array.prototype.remove = function(item) {
-    // remove every item in an array
-    let index = (this.indexOf(item) != -1) ? this.indexOf(item) : -1;
-    do {
-        this.splice(index, 1);
-        index = this.indexOf(item);
-    } while (index != -1);
-}
+        // remove every item in an array
+        let index = (this.indexOf(item) != -1) ? this.indexOf(item) : -1;
+        do {
+            this.splice(index, 1);
+            index = this.indexOf(item);
+        } while (index != -1);
+    }
+    //#endregion
 
+//#region Functions
 function isAlpha(str) { return /^[a-zA-Z() ]+$/.test(str) }
 
 function isRoot(path) {
@@ -40,3 +46,8 @@ function pathFix(str) {
     }
     return res;
 }
+
+function joinPath(a, b) {
+    return a + ((a[a.length - 1] == '/') ? '' : '/') + b;
+}
+//#endregion

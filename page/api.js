@@ -3,7 +3,7 @@ const { ipcRenderer, shell } = require('electron')
 
 ipcRenderer.on('sendCurrentDir', (event, path) => {
     pathUpdate(path);
-})
+});
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
     let element = document.getElementById('fileList');
@@ -36,7 +36,9 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     if (document.getElementById('mainScreen').clientHeight < document.documentElement.clientHeight) {
         document.getElementById('mainScreen').style.height = `100vh`;
     }
-})
+});
+
+
 
 function sendData(channel, data) {
     ipcRenderer.send(channel, data);

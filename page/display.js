@@ -30,8 +30,6 @@ function contentUpdate() {
     sendData('getDirContent', currentDirectory.path);
 }
 
-let highlightedItems = [];
-
 function highlightItem(event, item, itemObj) {
     if (item == undefined) {
         let child = document.getElementById('fileList').children;
@@ -41,7 +39,7 @@ function highlightItem(event, item, itemObj) {
         if (event.button == 0) {
             // if primary click
             let cdPath = currentDirectory.path;
-            shell.openPath(cdPath + ((cdPath[cdPath.length - 1] == '/') ? '' : '/') + item);
+            shell.openPath(joinPath(cdPath, item));
         }
         if (event.button != 2) return
         let b = false;
@@ -59,7 +57,7 @@ function highlightItem(event, item, itemObj) {
     }
 }
 
-function getActionMenu() {
+function openFile(path) {
 
 }
 

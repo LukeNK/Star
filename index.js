@@ -33,7 +33,7 @@ function windowReady() {
         if (err) user.path = "./"
         else user.path = data;
         win.webContents.send('sendCurrentDir', path.resolve(user.path).replace(/\\/g, '/'));
-    })
+    });
 
     //#endregion
 
@@ -47,6 +47,11 @@ function windowReady() {
             if (err) console.log(err)
         })
     });
+
+    ipcMain.on('getCopy', (event, file) => {
+
+    });
+
     ipcMain.on('window', (event, command) => {
         switch (command) {
             case 'close':
@@ -61,7 +66,7 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin')
         app.quit()
 
-})
+});
 
 function listDirectory(path, callback) {
     fs.readdir(path, (err, files) => {
