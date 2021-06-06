@@ -24,7 +24,8 @@ Most of item on this list are from my experience with other file explorer, but y
     - [ ] Copy folder
     - [ ] Move folder
     - [ ] Delete folder
-- [ ] Automatic check for the `./user` folder and add configs.
+    - [ ] Support shortcut
+- [x] Automatic check for the `./user` folder and add configs.
 - [ ] Auto update dir without breaking highlight system
 - [ ] Accept input in `<input id="pathInput">`
 - [x] API for get currentDir, dirContents

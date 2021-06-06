@@ -29,8 +29,11 @@ function windowReady() {
     //all listener
     //#region init
     fs.readFile('./user/lastSessionPath', "utf8", (err, data) => {
-        if (err) user.path = "./"
-        else user.path = data;
+        if (err) {
+            fs.mkdirSync('./user');
+            fs.writeFileSync('./user/lastSessionPath', path.resolve('./'))
+            user.path = './'
+        } else user.path = data;
         win.webContents.send('sendCurrentDir', path.resolve(user.path).replace(/\\/g, '/'));
     });
 
