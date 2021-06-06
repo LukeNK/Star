@@ -2,10 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "npm start",
+            "cwd": "${workspaceFolder}/src",
+            "command": "npm run start",
             "name": "Run npm start",
             "request": "launch",
             "type": "node-terminal"
-        },
+        }
     ]
 }

@@ -10,6 +10,17 @@
         "dist": "electron-builder -w",
         "winPort": "electron-builder --win portable"
     },
+    "build": {
+        "files": [
+            "**/*",
+            "./user/*"
+        ],
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "deleteAppDataOnUninstall": true
+        }
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/LukeNk/Star.git"
@@ -36,7 +47,7 @@
             "makers": [{
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
-                        "name": "star"
+                        "name": "Star"
                     }
                 },
                 {
