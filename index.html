@@ -24,10 +24,11 @@
             </li>
             <hr>
             <li id="actionMenu">
-                <a onclick="addToClipboard()">Copy</a>
-                <a id="actPaste" style="display: none;" onclick="sendData('doCopy', clipboard)">Paste</a>
+                <a onclick="currentAction = 'c'; addToClipboard()">Copy</a>
+                <a onclick="currentAction = 'x'; addToClipboard()">Cut</a>
+                <a id="actPaste" style="display: none;" onclick="pasteAction()">Paste</a>
                 <a>Edit</a>
-                <a style="background-color: var(--attention);">Delete</a>
+                <a style="background-color: var(--attention);" onclick="deleteAction()">Delete</a>
             </li>
         </ul>
     </div>

@@ -2,10 +2,10 @@
 A lightweight ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development.
 
 ## Usage
-Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature will be add soon.
+Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature for folder will be add soon.
 
 ### How to use
-Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
+Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^). Please careful when doing actions with folder because it is incompleted.
 
 ## Screenshots
 ![alt text](https://cdn.discordapp.com/attachments/704502790055133245/808542256427958282/unknown.png)
@@ -21,6 +21,10 @@ However, all of the source code was built with cross-platform philosophy, so the
 # Todo
 Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
 - [ ] Actions (move, copy, delete) !ATTENTION!
+    - [ ] Copy folder
+    - [ ] Move folder
+    - [ ] Delete folder
+- [ ] Auto update dir without breaking highlight system
 - [ ] Accept input in `<input id="pathInput">`
 - [x] API for get currentDir, dirContents
 - [ ] Refresh button 

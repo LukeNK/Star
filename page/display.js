@@ -30,14 +30,15 @@ function contentUpdate() {
 }
 
 function highlightItem(event, item, itemObj, isFolder) {
-    if (event.button == 0 && item && isFolder) {
+    if (event && event.button == 0 && item && isFolder) {
         goDownPath(item);
         return
-    } else if (item == undefined) {
+    } else if (event == undefined) {
         highlightedItems = [];
         let child = document.getElementById('fileList').children;
         for (let cur of child)
             cur.style.backgroundColor = ''; //remove background
+        return
     }
     if (event.button == 0) {
         // if primary click
@@ -46,8 +47,9 @@ function highlightItem(event, item, itemObj, isFolder) {
     }
     if (event.button != 2) return
     let b = false;
-    for (let l1 of highlightedItems) //check if item already highlighted
-        if (l1 == item) {
+    for (let l1 in highlightedItems) //check if item already highlighted
+        if (highlightedItems[l1] == item) {
+            highlightedItems.splice(parseInt(l1), 1);
             b = true;
             break;
         }
@@ -67,10 +69,37 @@ function addToClipboard() {
     highlightItem();
 }
 
+function pasteAction(action) {
+    let channel = action || currentAction;
+    if (channel == 'c') {
+        channel = 'Copy';
+    } else if (channel == 'x') {
+        channel = 'Move';
+    }
+    channel = 'do' + channel;
+    sendData(channel, clipboard);
+}
+
+function deleteAction() {
+    let temp = clipboard;
+    addToClipboard();
+    console.log(temp);
+    let file2Delete = clipboard;
+    console.log(file2Delete);
+    clipboard = temp;
+    if (file2Delete.length == 0) return;
+    sendData('doDelete', file2Delete);
+    highlightedItems = [];
+    highlightItem();
+}
+
 document.onkeydown = (ev) => {
     switch (ev.key) {
         case 'Escape':
             highlightItem();
+            break;
+        case 'Delete':
+            deleteAction();
             break;
         default:
             break;

@@ -1,11 +1,15 @@
 "use strict";
-const { ipcRenderer, shell } = require('electron')
+const { ipcRenderer, shell } = require('electron');
+let dirAutoUpdate; // auto update directory interval
 
 ipcRenderer.on('sendCurrentDir', (event, path) => {
     pathUpdate(path);
 });
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
+    // try {
+    //     clearInterval(dirAutoUpdate); // remove interval
+    // } catch (err) {}
     let element = document.getElementById('fileList');
     element.innerHTML = ''; // clear content
     let l1 = 0;
@@ -27,9 +31,13 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         let element = document.getElementById('fileList');
         element.appendChild(button);
     }
-
-    //handle display scoll
+    // handle display scoll
     document.documentElement.scrollTop = 0;
+
+    // create update interval
+    // dirAutoUpdate = setInterval(() => {
+    //     sendData('getDirContent', currentDirectory.path)
+    // }, 2000)
 });
 
 function sendData(channel, data) {

@@ -57,9 +57,52 @@ function windowReady() {
         }
 
         function callCount(err) {
+            if (err) console.log(err);
             callTime--;
             if (callTime == 0)
                 listDirectory(a, (files, fType) => {
+                    win.webContents.send('sendDirContent', files, fType)
+                })
+        }
+    });
+
+    ipcMain.on('doMove', (event, files) => {
+        let a = user.path;
+        let callTime = files.length;
+        for (let file of files) {
+            let b = file.split(`/`);
+            b = b[b.length - 1];
+            fs.rename(file, a + ((a[a.length - 1] == '/') ? '' : '/') + b, callCount)
+        }
+
+        function callCount(err) {
+            if (err) console.log(err);
+            callTime--;
+            if (callTime == 0)
+                listDirectory(a, (files, fType) => {
+                    win.webContents.send('sendDirContent', files, fType)
+                })
+        }
+    });
+
+    ipcMain.on('doDelete', (event, files) => {
+        let callTime = files.length;
+        for (let file of files)
+            fs.unlink( // I am using 14.15, will change to fs.rm
+                file,
+                // {
+                //     'force': true,
+                //     'recursive': true,
+                //     'maxRetries': 3
+                // },
+                callCount
+            );
+
+        function callCount(err) {
+            if (err) console.log(err);
+            callTime--;
+            if (callTime == 0)
+                listDirectory(user.path, (files, fType) => {
                     win.webContents.send('sendDirContent', files, fType)
                 })
         }
