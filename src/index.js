@@ -1,7 +1,7 @@
 "use strict";
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require("path");
 
 let win; //windows
@@ -51,19 +51,25 @@ function windowReady() {
     });
 
     ipcMain.on('doCopy', (event, files) => {
-        let a = user.path;
         let callTime = files.length;
         for (let file of files) {
-            let b = file.split(`/`);
-            b = b[b.length - 1];
-            fs.copyFile(file, a + ((a[a.length - 1] == '/') ? '' : '/') + b, callCount)
+            let nDir = path.resolve(user.path, path.basename(file));
+            if (fs.lstatSync(file).isDirectory()) {
+                fs.ensureDirSync(nDir);
+                fs.copy(file, nDir, callCount);
+            } else {
+                fs.writeFile(nDir, '', (err) => {
+                    if (err) return;
+                    fs.copy(file, nDir, callCount)
+                })
+            }
         }
 
         function callCount(err) {
             if (err) console.log(err);
             callTime--;
             if (callTime == 0)
-                listDirectory(a, (files, fType) => {
+                listDirectory(user.path, (files, fType) => {
                     win.webContents.send('sendDirContent', files, fType)
                 })
         }
@@ -91,15 +97,7 @@ function windowReady() {
     ipcMain.on('doDelete', (event, files) => {
         let callTime = files.length;
         for (let file of files)
-            fs.unlink( // I am using 14.15, will change to fs.rm
-                file,
-                // {
-                //     'force': true,
-                //     'recursive': true,
-                //     'maxRetries': 3
-                // },
-                callCount
-            );
+            fs.remove(file, callCount);
 
         function callCount(err) {
             if (err) console.log(err);
