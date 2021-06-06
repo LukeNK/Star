@@ -32,13 +32,7 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
 
     //handle display scoll
     document.documentElement.scrollTop = 0;
-    document.getElementById('mainScreen').style.height = `calc(${l1+1} * 1.5em + 1em)`;
-    if (document.getElementById('mainScreen').clientHeight < document.documentElement.clientHeight) {
-        document.getElementById('mainScreen').style.height = `100vh`;
-    }
 });
-
-
 
 function sendData(channel, data) {
     ipcRenderer.send(channel, data);
