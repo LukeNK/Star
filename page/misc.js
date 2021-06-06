@@ -4,7 +4,8 @@
 let currentDirectory = {
     path: './'
 }
-let highlightedItems = []; // item that was highlighted with secondary click
+let highlightedItems = []; // items that was highlighted with secondary click
+let clipboard = []; // store items with absolute path
 //#endregion
 
 //#region Prototypes

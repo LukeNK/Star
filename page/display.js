@@ -10,8 +10,7 @@ function goUpPath() { //go __back__ (..)
 }
 
 function goDownPath(path) { //go __into__ child folder
-    let sep = (currentDirectory.path[currentDirectory.path.length - 1] == '/') ? '' : '/';
-    pathUpdate(currentDirectory.path + sep + path);
+    pathUpdate(joinPath(currentDirectory.path, path));
 }
 
 function pathUpdate(path) {
@@ -30,41 +29,46 @@ function contentUpdate() {
     sendData('getDirContent', currentDirectory.path);
 }
 
-function highlightItem(event, item, itemObj) {
-    if (item == undefined) {
+function highlightItem(event, item, itemObj, isFolder) {
+    if (event.button == 0 && item && isFolder) {
+        goDownPath(item);
+    } else if (item == undefined) {
+        highlightedItems = [];
         let child = document.getElementById('fileList').children;
         for (let cur of child)
             cur.style.backgroundColor = ''; //remove background
-    } else {
-        if (event.button == 0) {
-            // if primary click
-            let cdPath = currentDirectory.path;
-            shell.openPath(joinPath(cdPath, item));
-        }
-        if (event.button != 2) return
-        let b = false;
-        for (let l1 of highlightedItems) //check if item already highlighted
-            if (l1 == item) {
-                b = true;
-                break;
-            }
-        if (b) {
-            itemObj.style.backgroundColor = '';
-        } else {
-            itemObj.style.backgroundColor = 'var(--primary-2)';
-            highlightedItems.push(item);
-        }
     }
+    if (event.button == 0) {
+        // if primary click
+        let cdPath = currentDirectory.path;
+        shell.openPath(joinPath(cdPath, item));
+    }
+    if (event.button != 2) return
+    let b = false;
+    for (let l1 of highlightedItems) //check if item already highlighted
+        if (l1 == item) {
+            b = true;
+            break;
+        }
+    if (b) {
+        itemObj.style.backgroundColor = '';
+    } else {
+        itemObj.style.backgroundColor = 'var(--primary-2)';
+        highlightedItems.push(item);
+    }
+
 }
 
-function openFile(path) {
-
+function addToClipboard() {
+    clipboard = [];
+    for (let cur of highlightedItems)
+        clipboard.push(joinPath(currentDirectory.path, cur));
+    highlightItem();
 }
 
 document.onkeydown = (ev) => {
     switch (ev.key) {
         case 'Escape':
-            highlightedItems = [];
             highlightItem();
             break;
         default:
