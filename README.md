@@ -20,11 +20,11 @@ However, all of the source code was built with cross-platform philosophy, so the
 
 # Todo
 Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
-- [ ] Actions (move, copy, delete) !ATTENTION!
-    - [ ] Copy folder
-    - [ ] Move folder
-    - [ ] Delete folder
-    - [ ] Support shortcut
+- [x] Actions (move, copy, delete) !ATTENTION!
+    - [x] Copy folder
+    - [x] Move folder
+    - [x] Delete folder
+    - [x] Support shortcut
 - [x] Automatic check for the `./user` folder and add configs.
 - [ ] Auto update dir without breaking highlight system
 - [ ] Accept input in `<input id="pathInput">`
