@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "electron .",
         "pack": "electron-builder --dir",
-        "dist": "electron-builder -w"
+        "dist": "electron-builder -w",
+        "winPort": "electron-builder --win portable"
     },
     "repository": {
         "type": "git",
