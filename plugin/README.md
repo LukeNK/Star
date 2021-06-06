@@ -1,2 +1,2 @@
 # Plugins
-Including integrated apps, custom controls, theme, external HTML.
+Including custom controls, theme, external HTML.

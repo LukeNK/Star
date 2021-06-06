@@ -8,8 +8,6 @@ ipcRenderer.on('sendCurrentDir', (event, path) => {
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
     let element = document.getElementById('fileList');
     element.innerHTML = ''; // clear content
-    message = message.split('/*/');
-    fType = fType.split('/*/');
     let l1 = 0;
     for (; l1 < message.length; l1++) {
         let button = document.createElement('button');

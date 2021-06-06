@@ -3,7 +3,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
-const misc = require('./backend/misc');
 
 let win; //windows
 
@@ -40,7 +39,7 @@ function windowReady() {
     //#region dir listener
     ipcMain.on('getDirContent', (event, path) => {
         listDirectory(path, (files, fType) => {
-            win.webContents.send('sendDirContent', misc.arr2str(files), misc.arr2str(fType))
+            win.webContents.send('sendDirContent', files, fType)
         })
         user.path = path;
         fs.writeFile('./user/lastSessionPath', user.path, (err) => {
@@ -48,8 +47,22 @@ function windowReady() {
         })
     });
 
-    ipcMain.on('getCopy', (event, file) => {
+    ipcMain.on('doCopy', (event, files) => {
+        let a = user.path;
+        let callTime = files.length;
+        for (let file of files) {
+            let b = file.split(`/`);
+            b = b[b.length - 1];
+            fs.copyFile(file, a + ((a[a.length - 1] == '/') ? '' : '/') + b, callCount)
+        }
 
+        function callCount(err) {
+            callTime--;
+            if (callTime == 0)
+                listDirectory(a, (files, fType) => {
+                    win.webContents.send('sendDirContent', files, fType)
+                })
+        }
     });
 
     ipcMain.on('window', (event, command) => {

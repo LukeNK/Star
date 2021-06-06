@@ -32,6 +32,7 @@ function contentUpdate() {
 function highlightItem(event, item, itemObj, isFolder) {
     if (event.button == 0 && item && isFolder) {
         goDownPath(item);
+        return
     } else if (item == undefined) {
         highlightedItems = [];
         let child = document.getElementById('fileList').children;
@@ -56,13 +57,13 @@ function highlightItem(event, item, itemObj, isFolder) {
         itemObj.style.backgroundColor = 'var(--primary-2)';
         highlightedItems.push(item);
     }
-
 }
 
 function addToClipboard() {
     clipboard = [];
     for (let cur of highlightedItems)
         clipboard.push(joinPath(currentDirectory.path, cur));
+    document.getElementById('actPaste').style.display = '';
     highlightItem();
 }
 
