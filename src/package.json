@@ -11,6 +11,7 @@
         "winPort": "electron-builder --win portable"
     },
     "build": {
+        "productName": "Star",
         "files": [
             "**/*",
             "./user/*"
@@ -46,8 +47,7 @@
     "config": {
         "forge": {
             "packagerConfig": {},
-            "makers": [
-                {
+            "makers": [{
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
                         "name": "Star"
