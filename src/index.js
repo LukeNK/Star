@@ -50,6 +50,16 @@ function windowReady() {
         })
     });
 
+    ipcMain.on('getFileContent', (event, file) => {
+        file = path.resolve(user.path, file); // file is relative
+        fs.readFile(file, 'utf8', (err, data) => {
+            if (err) {
+                win.webContents.send('sendFileContent', err);
+            } else
+                win.webContents.send('sendFileContent', data);
+        })
+    });
+
     ipcMain.on('doCopy', (event, files) => {
         let callTime = files.length;
         for (let file of files) {

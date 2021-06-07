@@ -49,6 +49,14 @@ input {
     width: 100%;
 }
 
+textarea {
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
 #navigationBar ul {
     list-style-type: none;
     margin: 0;
@@ -198,7 +206,7 @@ input {
 #txtEditor {
     display: none;
     position: fixed;
-    top: 0;
+    top: 2em;
     left: 0;
     width: 100%;
     height: 100%;

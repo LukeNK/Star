@@ -46,6 +46,8 @@ function highlightItem(event, item, itemObj, isFolder) {
         // if primary click on file
         let cdPath = currentDirectory.path;
         if ((txtEditor.fileExt).includes(extname(item))) {
+            activatingApp = true;
+            sendData('getFileContent', item); // idk some bug
             document.getElementById('txtEditor').style.display = 'block';
             document.getElementById('topBar').style.left = '0';
             document.getElementById('topBar').style.width = '100%';
@@ -105,6 +107,15 @@ function deleteAction() {
     sendData('doDelete', file2Delete);
     highlightedItems = [];
     highlightItem();
+}
+
+function closeApp() {
+    if (activatingApp) {
+        activatingApp = false;
+        document.getElementById('txtEditor').style.display = 'none';
+        document.getElementById('topBar').style.left = '';
+        document.getElementById('topBar').style.width = '';
+    } else sendData('window', 'close')
 }
 
 document.onkeydown = (ev) => {

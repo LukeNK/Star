@@ -35,7 +35,7 @@
     <div id="topBar">
         <input id="pathInput">
         <!--IDK why but we have to swap possition of 2 buttons-->
-        <button onclick="sendData('window', 'close')" id="topBarClose">X</button>
+        <button onclick="closeApp()" id="topBarClose">X</button>
         <button onclick="sendData('getDirContent', currentDirectory.path)" id="topBarRefresh"></button>
     </div>
     <div id="mainScreen">
@@ -56,6 +56,6 @@
             ]
         }
     </script>
-    <textarea style="width: 100%; height: 100%;"></textarea>
+    <textarea id="txtEditor-value" style="width: 100%; height: 100%; background-color: var(--primary-2); color: var(--text-color);"></textarea>
 </div>
 <html>

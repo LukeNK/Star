@@ -40,6 +40,10 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     // }, 2000)
 });
 
+ipcRenderer.on('sendFileContent', (event, content) => {
+    document.getElementById('txtEditor-value').value = content;
+});
+
 ipcRenderer.on('sendPluginList', (event, files) => {
 
 });

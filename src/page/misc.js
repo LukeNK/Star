@@ -6,6 +6,7 @@ let currentDirectory = {
 let highlightedItems = []; // items that was highlighted with secondary click
 let clipboard = [], // store items with absolute path
     currentAction = ''; // c: copy, x: cut (move);
+let activatingApp = false; // if there is an integrated app opening
 //#endregion
 
 //#region Prototypes
@@ -57,6 +58,6 @@ function extname(path) {
         if (path[l1] == '.')
             return (l1 == 0) ? '' : path.substr(l1, path.length - l1);
     }
-    return ''
+    return '';
 }
 //#endregion
