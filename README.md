@@ -56,6 +56,7 @@ Most of item on this list are from my experience with other file explorer, but y
     - [ ] Add and commit
     - [ ] Push
 - [ ] JSdoc comments
+- [ ] Folder visualizer
 
 ## Channel naming
 Each data channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`. \
