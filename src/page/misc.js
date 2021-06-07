@@ -1,5 +1,4 @@
 "use strict";
-
 //#region Global variables
 let currentDirectory = {
     path: './'
@@ -51,5 +50,13 @@ function pathFix(str) {
 
 function joinPath(a, b) {
     return a + ((a[a.length - 1] == '/') ? '' : '/') + b;
+}
+
+function extname(path) {
+    for (let l1 = path.length - 1; l1 >= 0; l1--) {
+        if (path[l1] == '.')
+            return (l1 == 0) ? '' : path.substr(l1, path.length - l1);
+    }
+    return ''
 }
 //#endregion

@@ -31,9 +31,11 @@ function contentUpdate() {
 
 function highlightItem(event, item, itemObj, isFolder) {
     if (event && event.button == 0 && item && isFolder) {
+        // if folder and main click
         goDownPath(item);
         return
     } else if (event == undefined) {
+        // if clear command
         highlightedItems = [];
         let child = document.getElementById('fileList').children;
         for (let cur of child)
@@ -41,8 +43,14 @@ function highlightItem(event, item, itemObj, isFolder) {
         return
     }
     if (event.button == 0) {
-        // if primary click
+        // if primary click on file
         let cdPath = currentDirectory.path;
+        if ((txtEditor.fileExt).includes(extname(item))) {
+            document.getElementById('txtEditor').style.display = 'block';
+            document.getElementById('topBar').style.left = '0';
+            document.getElementById('topBar').style.width = '100%';
+            return;
+        }
         shell.openPath(joinPath(cdPath, item));
     }
     if (event.button != 2) return
@@ -65,11 +73,13 @@ function addToClipboard() {
     clipboard = [];
     for (let cur of highlightedItems)
         clipboard.push(joinPath(currentDirectory.path, cur));
-    document.getElementById('actPaste').style.display = '';
     if (clipboard.length == 0) {
         document.getElementById('clipboardStatus').setAttribute('src', './page/clipboardNone.png');
-    } else
+        document.getElementById('actPaste').style.display = 'none';
+    } else {
         document.getElementById('clipboardStatus').setAttribute('src', './page/clipboardFill.png');
+        document.getElementById('actPaste').style.display = '';
+    }
     highlightItem();
 }
 

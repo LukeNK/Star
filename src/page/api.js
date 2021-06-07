@@ -40,6 +40,10 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     // }, 2000)
 });
 
+ipcRenderer.on('sendPluginList', (event, files) => {
+
+});
+
 function sendData(channel, data) {
     ipcRenderer.send(channel, data);
 }

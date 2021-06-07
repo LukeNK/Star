@@ -109,6 +109,12 @@ function windowReady() {
         }
     });
 
+    ipcMain.on('getPluginList', (event) => {
+        listDirectory('./plugin', (files) => {
+            win.webContents.send('sendPluginList', files);
+        })
+    })
+
     ipcMain.on('window', (event, command) => {
         switch (command) {
             case 'close':

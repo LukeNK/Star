@@ -48,11 +48,13 @@ Most of item on this list are from my experience with other file explorer, but y
         - [ ] Get files, play 
         - [ ] Style controls
     - [ ] Video player
+    - [ ] Plugin execute command
 - [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
 - [ ] Git support
     - [ ] Log
     - [ ] Add and commit
     - [ ] Push
+- [ ] JSdoc comments
 
 ## Channel naming
 Each data channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`. \
