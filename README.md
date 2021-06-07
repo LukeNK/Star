@@ -44,9 +44,10 @@ Most of item on this list are from my experience with other file explorer, but y
     - [ ] Scan ./plugin
     - [ ] Documentation
     - [ ] Text editor
-    - [ ] Music player (easy with `<audio>` tag)
+        - [ ] Save file
+    - [ ] Music player 
         - [ ] Get files, play 
-        - [ ] Style controls
+        - [ ] Custom controls
     - [ ] Video player
     - [ ] Plugin execute command
 - [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
