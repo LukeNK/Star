@@ -66,6 +66,10 @@ function addToClipboard() {
     for (let cur of highlightedItems)
         clipboard.push(joinPath(currentDirectory.path, cur));
     document.getElementById('actPaste').style.display = '';
+    if (clipboard.length == 0) {
+        document.getElementById('clipboardStatus').setAttribute('src', './page/clipboardNone.png');
+    } else
+        document.getElementById('clipboardStatus').setAttribute('src', './page/clipboardFill.png');
     highlightItem();
 }
 
