@@ -44,6 +44,11 @@ ipcRenderer.on('sendFileContent', (event, content) => {
     document.getElementById('txtEditor-value').value = content;
 });
 
+ipcRenderer.on('didSaveFile', (event, err) => {
+    if (err)
+        document.getElementById('txtEditor-value').value = err;
+});
+
 ipcRenderer.on('sendPluginList', (event, files) => {
 
 });

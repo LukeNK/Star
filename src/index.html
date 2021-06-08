@@ -53,10 +53,26 @@
         let txtEditor = {
             fileExt: [
                 '.txt'
-            ]
+            ],
+            currentFile: '',
+            open: (event, item, itemObj, isFolder) => {
+                txtEditor.currentFile = item;
+                sendData('getFileContent', item);
+                document.getElementById('txtEditor').style.display = 'block';
+                document.getElementById('topBar').style.left = '0';
+                document.getElementById('topBar').style.width = '100%';
+                document.getElementById('navigationBar').style.visibility = 'hidden';
+            },
+            close: () => {
+                document.getElementById('txtEditor').style.display = 'none';
+                document.getElementById('topBar').style.left = '';
+                document.getElementById('topBar').style.width = '';
+                document.getElementById('navigationBar').style.visibility = '';
+            }
         }
     </script>
-    <textarea id="txtEditor-value" style="width: 100%; height: 100%; background-color: var(--primary-2); color: var(--text-color);"></textarea>
+    <textarea id="txtEditor-value"></textarea>
+    <button id="txtEditor-button" onclick="sendData('doSaveFile', [txtEditor.currentFile, document.getElementById('txtEditor-value').value])">Save file</button>
 </div>
 <div id="audioPlayer">
     <script>

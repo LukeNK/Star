@@ -5,58 +5,26 @@ A lightweight ~~cross-platform~~ file manager focus on simple design but feature
 Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature for folder will be add soon.
 
 ### How to use
-Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^). Please careful when doing actions with folder because it is incompleted.
+Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
 
 ## Screenshots
-![alt text](https://cdn.discordapp.com/attachments/704502790055133245/808542256427958282/unknown.png)
-Version v1.0.0 development
+### Version `1.2.0` teaser image
+The main screen
+![alt text](https://cdn.discordapp.com/attachments/851724380626485269/851724489326067722/unknown.png)
+Integrated editor
+![alt text](https://cdn.discordapp.com/attachments/851724380626485269/851738072584421416/unknown.png)
+### Version `1.0.0` development
+![1.0.0](https://cdn.discordapp.com/attachments/704502790055133245/808542256427958282/unknown.png)
 
 ## Port to another platform
 I'm researching the way to port into MacOS and and Linux, but...
 - To make for MacOS require a Mac (which I don't have right now)
-- To make for Linux, we current have [this issue](https://github.com/electron-userland/electron-build-service/issues/9) which I will try my best to fix it, but not anytime soon.
+- To make for Linux, we current have [this issue](https://github.com/electron-userland/electron-build-service/issues/9) which I will try my best to fix it, but not anytime soon. However, all of the source code was built with cross-platform philosophy, so the process will be really quick if I can fix those issue.
 
-However, all of the source code was built with cross-platform philosophy, so the process will be really quick if I can fix those issue.
-
-# Todo
-Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
-- [x] Actions (move, copy, delete) !ATTENTION!
-    - [x] Copy folder
-    - [x] Move folder
-    - [x] Delete folder
-    - [x] Support shortcut
-- [x] Automatic check for the `./user` folder and add configs.
-- [ ] Auto update dir without breaking highlight system
-- [ ] Accept input in `<input id="pathInput">`
-- [x] API for get currentDir, dirContents
-- [ ] Refresh button 
-    - [x] Fix refresh bug
-    - [x] Icon
-    - [ ] SVG Icon instead of png
-- [x] Fix newline error when file name is longer than the width
-- [x] Fix clientHeight and scrollHeight bug. Problem can be reproduce by go from a larger folder to smaller folder
-- [ ] Navigation pannel
-- [ ] Test on UNIX filesystem
-- [x] Cross-plaform by using electron-builer
-- [ ] User folder
-    - [x] LastSession
-- [ ] Multi-media features/ integrated app/ plugin
-    - [ ] Scan ./plugin
-    - [ ] Documentation
-    - [ ] Text editor
-        - [ ] Save file
-    - [ ] Music player 
-        - [ ] Get files, play 
-        - [ ] Custom controls
-    - [ ] Video player
-    - [ ] Plugin execute command
-- [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
-- [ ] Git support
-    - [ ] Log
-    - [ ] Add and commit
-    - [ ] Push
-- [ ] JSdoc comments
-- [ ] Folder visualizer
+## Why?
+Why not after all? \
+I have searched for a simple file manager that include many feature inside it for a long time, but I didn't see anything that seems to fit my style, so I created one. I don't really hope that this project will go any further than my laptop, but if it do, thank you for developers who helped my with this project and users who report bugs and share their experience with me. Being a student, programming everyday is very hard, so I am sorry in advance for any inconvenience. \
+Again, thank you for making and using this project, and reading my broken English this far.
 
 ## Channel naming
 Each data channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`. \

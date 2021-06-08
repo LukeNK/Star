@@ -39,7 +39,7 @@ function windowReady() {
 
     //#endregion
 
-    //#region dir listener
+    //#region listener
     ipcMain.on('getDirContent', (event, path) => {
         listDirectory(path, (files, fType) => {
             win.webContents.send('sendDirContent', files, fType)
@@ -58,6 +58,18 @@ function windowReady() {
             } else
                 win.webContents.send('sendFileContent', data);
         })
+    });
+
+    ipcMain.on('doSaveFile', (event, arr) => {
+        let file = arr[0];
+        let data = arr[1];
+        file = path.resolve(user.path, file); // file is relative
+        fs.writeFile(file, data, 'utf8', (err) => {
+            if (err) {
+                console.log(err);
+                win.webContents.send('didSaveFile', err);
+            }
+        });
     });
 
     ipcMain.on('doCopy', (event, files) => {

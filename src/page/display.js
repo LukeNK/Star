@@ -47,10 +47,7 @@ function highlightItem(event, item, itemObj, isFolder) {
         let cdPath = currentDirectory.path;
         if ((txtEditor.fileExt).includes(extname(item))) {
             activatingApp = true;
-            sendData('getFileContent', item); // idk some bug
-            document.getElementById('txtEditor').style.display = 'block';
-            document.getElementById('topBar').style.left = '0';
-            document.getElementById('topBar').style.width = '100%';
+            txtEditor.open(event, item, itemObj, isFolder);
             return;
         }
         shell.openPath(joinPath(cdPath, item));
@@ -112,9 +109,7 @@ function deleteAction() {
 function closeApp() {
     if (activatingApp) {
         activatingApp = false;
-        document.getElementById('txtEditor').style.display = 'none';
-        document.getElementById('topBar').style.left = '';
-        document.getElementById('topBar').style.width = '';
+        txtEditor.close();
     } else sendData('window', 'close')
 }
 
