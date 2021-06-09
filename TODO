@@ -4,6 +4,7 @@ Most of item on this list are from my experience with other file explorer, but y
     [x] Move folder
     [x] Delete folder
     [x] Support shortcut
+[ ] Tutorial for this confusing UI and mouse usages
 [x] Automatic check for the `./user` folder and add configs.
 [ ] Auto update dir without breaking highlight system
 [ ] Accept input in `<input id="pathInput">`
