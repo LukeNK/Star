@@ -4,6 +4,7 @@ Most of item on this list are from my experience with other file explorer, but y
     [x] Move folder
     [x] Delete folder
     [x] Support shortcut
+[ ] Encodings support
 [ ] Tutorial for this confusing UI and mouse usages
 [x] Automatic check for the `./user` folder and add configs.
 [ ] Auto update dir without breaking highlight system
@@ -21,6 +22,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] User folder
     [x] LastSession
 [ ] Multi-media features/ integrated app/ plugin
+    [ ] Fix plugin not load on the first loading !ATTENTION!
     [ ] Scan ./plugin
     [ ] Documentation
     [x] Text editor
@@ -30,6 +32,7 @@ Most of item on this list are from my experience with other file explorer, but y
         [ ] Custom controls
     [ ] Video player
     [ ] Plugin execute command
+    [ ] PLUGIN extention detection
 [x] Fix [this](https://cdn.discordapp.com/attachments/704502790055133245/850613813194915891/unknown.png)
 [ ] Git support
     [ ] Log

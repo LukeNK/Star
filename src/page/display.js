@@ -44,12 +44,16 @@ function highlightItem(event, item, itemObj, isFolder) {
     }
     if (event.button == 0) {
         // if primary click on file
-        let cdPath = currentDirectory.path;
-        if ((txtEditor.fileExt).includes(extname(item))) {
-            activatingApp = true;
-            txtEditor.open(event, item, itemObj, isFolder);
-            return;
+        if (PLUGINEXT[extname(item)] != undefined) {
+            try {
+                (PLUGINEXT[extname(item)]).open(event, item, itemObj, isFolder);
+            } catch (err) {
+                console.log('Plugin error');
+                console.log(err);
+            }
+            return
         }
+        let cdPath = currentDirectory.path;
         shell.openPath(joinPath(cdPath, item));
     }
     if (event.button != 2) return
@@ -96,9 +100,7 @@ function pasteAction(action) {
 function deleteAction() {
     let temp = clipboard;
     addToClipboard();
-    console.log(temp);
     let file2Delete = clipboard;
-    console.log(file2Delete);
     clipboard = temp;
     if (file2Delete.length == 0) return;
     sendData('doDelete', file2Delete);
@@ -108,8 +110,7 @@ function deleteAction() {
 
 function closeApp() {
     if (activatingApp) {
-        activatingApp = false;
-        txtEditor.close();
+        (PLUGINEXT[activatingApp]).close();
     } else sendData('window', 'close')
 }
 

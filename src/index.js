@@ -132,10 +132,27 @@ function windowReady() {
     });
 
     ipcMain.on('getPluginList', (event) => {
-        listDirectory('./plugin', (files) => {
-            win.webContents.send('sendPluginList', files);
-        })
-    })
+        listDirectory('./plugin/script', (files) => {
+            let callTime = files.length;
+            let dir = './plugin/script/',
+                scripts = []
+            for (let file of files)
+                fs.readFile(dir + file, 'utf8', (err, data) => {
+                    if (err) { callCount(err); return; }
+                    scripts.push(data);
+                    callCount();
+                });
+
+            function callCount(err) {
+                if (err) console.log(err);
+                callTime--;
+                if (callTime == 0) {
+                    win.webContents.send('sendPluginList', scripts);
+                    console.log('Plugin loaded')
+                }
+            }
+        });
+    });
 
     ipcMain.on('window', (event, command) => {
         switch (command) {

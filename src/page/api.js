@@ -2,9 +2,7 @@
 const { ipcRenderer, shell } = require('electron');
 let dirAutoUpdate; // auto update directory interval
 
-ipcRenderer.on('sendCurrentDir', (event, path) => {
-    pathUpdate(path);
-});
+ipcRenderer.on('sendCurrentDir', (event, path) => { pathUpdate(path); });
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
     // try {
@@ -49,10 +47,12 @@ ipcRenderer.on('didSaveFile', (event, err) => {
         document.getElementById('txtEditor-value').value = err;
 });
 
-ipcRenderer.on('sendPluginList', (event, files) => {
-
+ipcRenderer.on('sendPluginList', (event, scripts) => {
+    // execute every init script
+    for (let cur of scripts) {
+        let func = new Function(cur);
+        func();
+    }
 });
 
-function sendData(channel, data) {
-    ipcRenderer.send(channel, data);
-}
+let sendData = ipcRenderer.send;

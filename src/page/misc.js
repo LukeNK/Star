@@ -6,7 +6,9 @@ let currentDirectory = {
 let highlightedItems = []; // items that was highlighted with secondary click
 let clipboard = [], // store items with absolute path
     currentAction = ''; // c: copy, x: cut (move);
-let activatingApp = false; // if there is an integrated app opening
+let activatingApp = ''; // if there is an integrated app opening an exention
+let PLUGINS = {}; // plugin array for plugins to add scripts and data
+let PLUGINEXT = {}; // plugin exention array
 //#endregion
 
 //#region Prototypes
@@ -54,9 +56,10 @@ function joinPath(a, b) {
 }
 
 function extname(path) {
+    // get the extention part AFTER the period
     for (let l1 = path.length - 1; l1 >= 0; l1--) {
         if (path[l1] == '.')
-            return (l1 == 0) ? '' : path.substr(l1, path.length - l1);
+            return (l1 == 0) ? '' : path.substr(l1 + 1, path.length - (l1 - 1));
     }
     return '';
 }
