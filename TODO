@@ -1,16 +1,6 @@
 Most of item on this list are from my experience with other file explorer, but you can add more into this list by create an issue.
-[ ] Encodings support
-[ ] Tutorial for this confusing UI and mouse usages
-[ ] Auto update dir without breaking highlight system
-[ ] Accept input in `<input id="pathInput">`
-[ ] Refresh button 
-    [x] Fix refresh bug
-    [x] Icon
-    [ ] SVG Icon instead of png
-[ ] Navigation pannel
-[ ] Test on UNIX filesystem
-[ ] User folder
-    [x] LastSession
+
+# Working
 [ ] Multi-media features/ integrated app/ plugin
     [ ] Fix plugin not load on the first loading !ATTENTION!
     [ ] Scan ./plugin
@@ -24,6 +14,22 @@ Most of item on this list are from my experience with other file explorer, but y
     [ ] Video player
     [ ] Plugin execute command
     [ ] PLUGIN extention detection
+
+# Important
+[ ] Encodings support
+[ ] Tutorial for this confusing UI and mouse usages
+[ ] Auto update dir without breaking highlight system
+[ ] Accept input in `<input id="pathInput">`
+[ ] Test on UNIX filesystem
+
+# Normal
+[ ] Refresh button 
+    [x] Fix refresh bug
+    [x] Icon
+    [ ] SVG Icon instead of png
+[ ] Navigation pannel
+[ ] User folder
+    [x] LastSession
 [ ] Git support
     [ ] Log
     [ ] Add and commit
@@ -32,6 +38,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] Folder visualizer
 [ ] Custom installer
 
+# Done
 [x] Copy plugin folder into the install folder. !DO NOT BUILD IF NOT RESOLVE THIS!
 [x] Actions (move, copy, delete) !ATTENTION!
     [x] Copy folder
