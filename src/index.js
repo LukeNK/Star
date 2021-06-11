@@ -177,7 +177,6 @@ function listDirectory(path, callback) {
         let type = []
         for (; l1 < files.length; l1++) {
             //d: directory, f: file, e: error;
-
             try {
                 type[l1] = (fs.lstatSync(`${path + ((path[path.length - 1] == '/') ? '' : '/') + files[l1]}`).isDirectory()) ? 'd' : 'f';
             } catch (err) { type[l1] = 'e' }
