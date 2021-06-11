@@ -28,6 +28,7 @@ Most of item on this list are from my experience with other file explorer, but y
     [ ] Documentation
     [x] Text editor
         [x] Save file
+        [x] Fix newline problem where text is higher than the height, the last few line went missing
     [ ] Music player 
         [ ] Get files, play 
         [ ] Custom controls
