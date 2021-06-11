@@ -12,9 +12,9 @@
     },
     "build": {
         "productName": "Star",
-        "files": [
-            "**/*",
-            "./user/*"
+        "extraFiles": [
+            "./user",
+            "./plugin"
         ],
         "nsis": {
             "oneClick": false,
@@ -47,8 +47,7 @@
     "config": {
         "forge": {
             "packagerConfig": {},
-            "makers": [
-                {
+            "makers": [{
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
                         "name": "Star"
