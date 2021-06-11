@@ -1,11 +1,15 @@
 # Star
-A lightweight ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development. Version `1.x` means release still in development. 
+A ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development. Version `1.x` means release still in development. 
 
 ## Usage
 Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature for folder will be add soon.
 
 ### How to use
 Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
+
+## Plugin
+*For developers: you can refer to `plugin/README.md`* \
+Plugin are currently in development, which in future will have documentation and support external plugins. Currently we have an intergrated text editor and are planning to make a multimedia player (check `TODO` for updates on the process).
 
 ## Screenshots
 ### Version `1.2.0` teaser image
@@ -29,7 +33,7 @@ Again, thank you for making and using this project, and reading my broken Englis
 
 ## Run/build the app
 *Currently, only Windows app was fully tested* \
-Start by running `npm run start` in `src` directory. For Visual Studio Code user, you can simply press `F5` to start running the app. \
+Start by running `npm run start` in `src` directory. For Visual Studio Code users, you can simply press `F5` to start running the app. \
 You can make a full installation by using `npm run dist`, or make the portable version by using `npm run winPort` (in `src` directory). Make both by using the `winBuild.js` script (the script will automatically change the working directory).
 
 ## Channel naming
