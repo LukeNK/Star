@@ -1,6 +1,10 @@
 const { execSync } = require('child_process');
+const fs = require('./src/node_modules/fs-extra')
 const path = require('path');
 let isWin = (path.sep == '/') ? false : true;
+
+console.log('Edit lastSessionPath');
+fs.writeFileSync('./src/user/lastSessionPath', './', 'utf8');
 
 console.log('Pack for windows');
 execSync('npm run dist', { cwd: 'src' });
