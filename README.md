@@ -8,7 +8,7 @@ Right now, it can only display files, folders and allow you to open files with d
 Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
 
 ## Plugin
-*For developers: you can refer to `plugin/README.md`* \
+*For developers: you can refer to `src/plugin/README.md`* \
 Plugin are currently in development, which in future will have documentation and support external plugins. Currently we have an intergrated text editor and are planning to make a multimedia player (check `TODO` for updates on the process).
 
 ## Screenshots
