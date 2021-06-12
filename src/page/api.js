@@ -55,4 +55,23 @@ ipcRenderer.on('sendPluginList', (event, scripts) => {
     }
 });
 
+function getData(path, callback) {
+    // warpper for AJAX
+    console.log(path);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                callback(undefined, this.responseText)
+            } else if (this.status == 404) {
+                callback(new Error('File not found'), undefined);
+            }
+            console.log(this.status);
+        }
+    };
+    xhttp.open("GET", path, true);
+    xhttp.send();
+
+}
+
 let sendData = ipcRenderer.send;

@@ -1,9 +1,15 @@
+getData('./plugin/html/txtEditor.html', (err, data) => {
+    // load HTML
+    document.body.innerHTML += data;
+})
 PLUGINS.txtEditor = {
     currentFile: '',
     open: (event, item, itemObj, isFolder) => {
         activatingApp = 'txt';
         PLUGINS.txtEditor.currentFile = item;
-        sendData('getFileContent', item);
+        getData(joinPath(currentDirectory.path, item), (err, data) => {
+            document.getElementById('txtEditor-value').value = data || err;
+        })
         document.getElementById('txtEditor').style.display = 'block';
         document.getElementById('topBar').style.left = '0';
         document.getElementById('topBar').style.width = '100%';

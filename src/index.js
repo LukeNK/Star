@@ -32,7 +32,7 @@ fs.readFile('./user/lastSessionPath', "utf8", (err, data) => {
         fs.mkdirSync('./user');
         fs.writeFileSync('./user/lastSessionPath', path.resolve('./'))
         user.path = './'
-    } else user.path = data;
+    } else user.path = path.resolve(data);
 });
 
 function doneInit() {

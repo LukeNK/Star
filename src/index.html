@@ -47,17 +47,7 @@
         <img id="clipboardStatus" src="./page/clipboardNone.png">
     </div>
 </body>
-<!--Integrated app-->
-<div id="txtEditor">
-    <textarea id="txtEditor-value"></textarea>
-    <button id="txtEditor-button" onclick="sendData('doSaveFile', [PLUGINS.txtEditor.currentFile, document.getElementById('txtEditor-value').value])">Save file</button>
-</div>
-<div id="audioPlayer">
-    <script>
-    </script>
-</div>
 <script>
-    console.log('Ready');
-    sendData('getPluginList'); // I don't know why but we need to have a refress so it can send the data back
+    sendData('getPluginList');
 </script>
 <html>
