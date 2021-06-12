@@ -34,7 +34,7 @@ Again, thank you for making and using this project, and reading my broken Englis
 ## Run/build the app
 *Currently, only Windows app was fully tested* \
 Start by running `npm run start` in `src` directory. For Visual Studio Code users, you can simply press `F5` to start running the app. \
-You can make a full installation by using `npm run dist`, or make the portable version by using `npm run winPort` (in `src` directory). Make both by using the `winBuild.js` script (the script will automatically change the working directory).
+You can build both portable and setup by `make win`. If you want to make setup by `make winSetup` or `make winPort` for portable version. For manual build or people who love to make life harder, remember `user/lastSessionPath` is the folder when user first open the app (or the first folder to appear in portable version).
 
 ## Channel naming
 Each data channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`. \
