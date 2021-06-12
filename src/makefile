@@ -3,7 +3,7 @@ win: preBuild winSetup winPort postBuild
 
 # General
 preBuild:
-	echo "./" > user/lastSessionPath
+	echo ./ > user/lastSessionPath
 	-rm ../build/* -R
 
 postBuild:
