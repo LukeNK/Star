@@ -57,7 +57,6 @@ ipcRenderer.on('sendPluginList', (event, scripts) => {
 
 function getData(path, callback) {
     // warpper for AJAX
-    console.log(path);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -71,7 +70,6 @@ function getData(path, callback) {
     };
     xhttp.open("GET", path, true);
     xhttp.send();
-
 }
 
 let sendData = ipcRenderer.send;
