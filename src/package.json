@@ -13,7 +13,6 @@
     "build": {
         "productName": "Star",
         "extraFiles": [
-            "./user",
             "./plugin"
         ],
         "nsis": {
