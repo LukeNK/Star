@@ -61,7 +61,7 @@ function highlightItem(event, item, itemObj, isFolder) {
 function addToClipboard() {
     clipboard = [];
     for (let cur of highlightedItems)
-        clipboard.push(joinPath(currentDirectory.path, cur));
+        clipboard.push(path.join(currentDirectory.path, cur));
     if (clipboard.length == 0) {
         document.getElementById('clipboardStatus').setAttribute('src', './page/clipboardNone.png');
         document.getElementById('actPaste').style.display = 'none';
