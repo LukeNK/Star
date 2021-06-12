@@ -2,12 +2,24 @@
 const { ipcRenderer, shell } = require('electron');
 let dirAutoUpdate; // auto update directory interval
 
-ipcRenderer.on('sendCurrentDir', (event, path) => { pathUpdate(path); });
+ipcRenderer.on('sendCurrentDir', (event, loc) => {
+    currentDirectory.path = loc;
+    contentUpdate();
+});
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
+    let cdPath = currentDirectory.path;
     // try {
     //     clearInterval(dirAutoUpdate); // remove interval
     // } catch (err) {}
+
+    // buttons
+    document.getElementById('navInActive').innerHTML =
+        path.basename(path.dirname(currentDirectory.path));
+    document.getElementById('navActive').innerHTML = path.basename(cdPath);
+    document.getElementById('pathInput').value = cdPath;
+
+    // fileList
     let element = document.getElementById('fileList');
     element.innerHTML = ''; // clear content
     let l1 = 0;
@@ -18,7 +30,6 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
             // if error
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
-            let cdPath = currentDirectory.path;
             button.setAttribute('onmousedown', `highlightItem(event, this.innerHTML, this);`);
             //button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); // edit this for cross-platform
         } else if (fType[l1] == 'd') {
@@ -55,8 +66,9 @@ ipcRenderer.on('sendPluginList', (event, scripts) => {
     }
 });
 
-function getData(path, callback) {
+function getData(loc, callback) {
     // warpper for AJAX
+    loc = path.resolve(loc);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -65,10 +77,9 @@ function getData(path, callback) {
             } else if (this.status == 404) {
                 callback(new Error('File not found'), undefined);
             }
-            console.log(this.status);
         }
     };
-    xhttp.open("GET", path, true);
+    xhttp.open("GET", loc, true);
     xhttp.send();
 }
 

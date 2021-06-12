@@ -7,7 +7,7 @@ PLUGINS.txtEditor = {
     open: (event, item, itemObj, isFolder) => {
         activatingApp = 'txt';
         PLUGINS.txtEditor.currentFile = item;
-        getData(joinPath(currentDirectory.path, item), (err, data) => {
+        getData(path.join(currentDirectory.path, item), (err, data) => {
             document.getElementById('txtEditor-value').value = data || err;
         })
         document.getElementById('txtEditor').style.display = 'block';

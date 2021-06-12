@@ -1,7 +1,9 @@
 "use strict";
+const path = require('path');
+
 //#region Global variables
 let currentDirectory = {
-    path: './'
+    path: path.resolve('./') // current user directory (absolute)
 }
 let highlightedItems = []; // items that was highlighted with secondary click
 let clipboard = [], // store items with absolute path
@@ -36,31 +38,8 @@ function isRoot(path) {
     return false
 }
 
-function getFolder(path) {
-    path = path.split('/');
-    return path[path.length - 1];
-}
-
-function pathFix(str) {
-    let res = str;
-    if (res.length == 2 && isAlpha(res[0])) {
-        return res[0] + ':/';
-    } else if (res.length == 1 && !isAlpha(res[0])) {
-        return res[0];
-    }
-    return res;
-}
-
-function joinPath(a, b) {
-    return a + ((a[a.length - 1] == '/') ? '' : '/') + b;
-}
-
-function extname(path) {
-    // get the extention part AFTER the period
-    for (let l1 = path.length - 1; l1 >= 0; l1--) {
-        if (path[l1] == '.')
-            return (l1 == 0) ? '' : path.substr(l1 + 1, path.length - (l1 - 1));
-    }
-    return '';
+function extname(loc) {
+    loc = path.extname(loc);
+    return (loc[0] == '.') ? loc.substr(1, loc.length - 1) : loc;
 }
 //#endregion

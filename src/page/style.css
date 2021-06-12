@@ -33,6 +33,7 @@ button {
     background-color: rgba(0, 0, 0, 0);
     color: var(--text-color);
     text-align: left;
+    vertical-align: middle;
     -webkit-app-region: no-drag;
 }
 
@@ -203,6 +204,7 @@ textarea:focus {
 
 #bottomBar * {
     margin: 0 0.25em;
+    padding: 0;
 }
 
 #clipboardStatus {

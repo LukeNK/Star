@@ -1,5 +1,4 @@
 "use strict";
-
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs-extra');
 const path = require("path");
@@ -31,7 +30,7 @@ fs.readFile('./user/lastSessionPath', "utf8", (err, data) => {
     if (err) {
         fs.mkdirSync('./user');
         fs.writeFileSync('./user/lastSessionPath', path.resolve('./'))
-        user.path = './'
+        user.path = path.resolve('./');
     } else user.path = path.resolve(data);
 });
 
