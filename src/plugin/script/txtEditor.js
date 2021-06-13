@@ -5,6 +5,7 @@ getData('./plugin/html/txtEditor.html', (err, data) => {
 PLUGINS.txtEditor = {
     currentFile: '',
     open: (event, item, itemObj, isFolder) => {
+        if (!(event || item || itemObj || isFolder)) { PLUGINS.txtEditor.close(); return } // if pass nothing, close
         activatingApp = 'txt';
         PLUGINS.txtEditor.currentFile = item;
         getData(path.join(currentDirectory.path, item), (err, data) => {
@@ -25,4 +26,4 @@ PLUGINS.txtEditor = {
         activatingApp = '';
     }
 }
-PLUGINEXT.txt = PLUGINS.txtEditor; // push to .txt extention
+PLUGINEXT.txt = PLUGINS.txtEditor.open; // push to .txt extention

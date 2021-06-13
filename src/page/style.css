@@ -64,6 +64,33 @@ textarea:focus {
     outline: none;
 }
 
+
+/* Custom elements */
+
+.slider {
+    -webkit-appearance: none;
+    height: 10px;
+    background-color: var(--primary-2);
+    opacity: 0.5;
+    transition: opacity 200ms;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary-1);
+    cursor: pointer;
+}
+
+
+/* IDs */
+
 #navigationBar ul {
     list-style-type: none;
     margin: 0;
@@ -100,7 +127,7 @@ textarea:focus {
     left: 25%;
     top: 0;
     height: 2em;
-    width: 75vw;
+    width: 75%;
     background-color: var(--primary-1);
     margin-top: 0px;
     -webkit-app-region: drag;
@@ -108,8 +135,11 @@ textarea:focus {
 
 #topBar input {
     height: 100%;
+    width: calc(100% - 2em);
     padding-right: 0;
     padding-left: 1em;
+    -webkit-user-select: none;
+    user-select: none;
     -webkit-app-region: drag;
 }
 

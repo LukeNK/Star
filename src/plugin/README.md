@@ -32,7 +32,8 @@ getData('./plugin/html/name.html', (err, data) => {
 })
 PLUGINS.name = {
     open: (event, item, itemObj, isFolder) => {
-        activatingApp = 'exention'; // your currently active extention of 'item'
+        if (!(event || item || itemObj || isFolder)) { PLUGINS.name.close(); return } // When the close button was clicked, it will pass nothing, so redirect to close()
+        activatingApp = 'exention'; // your currently active extention of 'item', use to make close button close your app, but can also be change by apps that were called later than yours
         // invoke when a file was clicked
     },
     close: () => {
@@ -42,5 +43,5 @@ PLUGINS.name = {
 }
 
 // do this for every exention that you supported
-PLUGINEXT.exention = PLUGINS.name; // push to .txt extention
+PLUGINEXT.exention = PLUGINS.name.open; // push to .txt extention
 ```

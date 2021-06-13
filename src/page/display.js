@@ -32,7 +32,7 @@ function highlightItem(event, item, itemObj, isFolder) {
         // if primary click on file
         if (PLUGINEXT[extname(item)] != undefined) {
             try {
-                (PLUGINEXT[extname(item)]).open(event, item, itemObj, isFolder);
+                PLUGINEXT[extname(item)](event, item, itemObj, isFolder);
             } catch (err) {
                 console.log('Plugin error');
                 console.log(err);
@@ -96,7 +96,7 @@ function deleteAction() {
 
 function closeApp() {
     if (activatingApp) {
-        (PLUGINEXT[activatingApp]).close();
+        PLUGINEXT[activatingApp]();
     } else sendData('window', 'close')
 }
 

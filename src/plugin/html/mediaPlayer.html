@@ -1,9 +1,13 @@
 <style>
-    #mediaPLayer {
+    #mediaPlayer {
         display: none;
+        position: fixed;
+        background-color: var(--primary-1);
     }
 </style>
 <div id="mediaPlayer">
-    <button>Play</button>
-    <button>Stop</button>
+    <button onclick="PLUGINS.mediaPlayer.curAudio.play()">Play</button>
+    <button onclick="PLUGINS.mediaPlayer.curAudio.pause()">Stop</button>
+    <input id="mediaPlayer-vol" class="slider" type="range" min="0" max="100" value="100" oninput="PLUGINS.mediaPlayer.onVolChange(this.value)">
+    <button onclick="PLUGINS.mediaPlayer.hide()">Hide</button>
 </div>
