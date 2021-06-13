@@ -7,6 +7,7 @@ body {
     margin: 0px;
     color: var(--text-color);
     height: 100%;
+    overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -196,12 +197,13 @@ textarea:focus {
 
 #fileList {
     position: absolute;
-    padding-top: 2.25em;
+    margin-top: 2em;
     /* Avoid bottom bar */
-    padding-bottom: 1.5em;
-    min-height: 100%;
+    padding-bottom: 3.5em;
+    height: 100%;
     width: 75%;
     background-color: var(--background-color);
+    overflow-y: auto;
 }
 
 #fileList p {
