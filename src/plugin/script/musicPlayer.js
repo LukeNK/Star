@@ -11,6 +11,7 @@
             'ogg'
         ],
         curAudio: undefined,
+        msg: 'Playing ',
         open: (event, item, itemObj, isFolder) => {
             if (!PLUGINS.musicPlayer.curAudio)
                 document.getElementById('bottomBar').innerHTML = `<button id="musicPlayer-button" onclick="PLUGINS.musicPlayer.show(event)">Playing</button>` + document.getElementById('bottomBar').innerHTML;
@@ -30,7 +31,7 @@
                     dur = PLUGINS.musicPlayer.curAudio.duration;
                 if (cur == dur) clearInterval(PLUGINS.musicPlayer.curInterval);
                 document.getElementById('musicPlayer-cur').value = 1000 * cur / dur; // 1000, not 100
-                document.getElementById('musicPlayer-button').innerHTML = `Playing ${parseInt(cur/60)}:${parseInt(cur % 60)}`;
+                document.getElementById('musicPlayer-button').innerHTML = `${PLUGINS.musicPlayer.msg}${parseInt(cur/60)}:${parseInt(cur % 60)}`;
             }, 500)
         },
         show: (event) => {
@@ -52,7 +53,11 @@
             // on current time change
             PLUGINS.musicPlayer.curAudio.currentTime = PLUGINS.musicPlayer.curAudio.duration * pos / 1000;
         },
-        curInterval: undefined
+        curInterval: undefined,
+        onLoop: () => {
+            PLUGINS.musicPlayer.curAudio.loop = !PLUGINS.musicPlayer.curAudio.loop;
+            if (PLUGINS.musicPlayer.curAudio.loop) { PLUGINS.musicPlayer.msg = 'Loop ' } else PLUGINS.musicPlayer.msg = 'Playing '
+        }
     }
     for (let ext of PLUGINS.musicPlayer.ext)
         PLUGINEXT[ext] = PLUGINS.musicPlayer.open;

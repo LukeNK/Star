@@ -15,12 +15,14 @@
     }
     
     #musicPlayer .slider {
-        margin: 0;
+        margin-left: 0;
     }
     
     #musicPlayer-vol {
         width: 50%;
+        float: right;
         margin-right: 0;
+        margin-top: 0.30em;
     }
     
     #musicPlayer-hide {
@@ -34,8 +36,11 @@
 <div id="musicPlayer">
     <button onclick="PLUGINS.musicPlayer.curAudio.play()">Play</button>
     <button onclick="PLUGINS.musicPlayer.curAudio.pause()">Stop</button>
+
     <input id="musicPlayer-vol" class="slider" type="range" min="0" max="100" value="100" oninput="PLUGINS.musicPlayer.onVolChange(this.value)">
     <!--Note: the max value is 1000-->
     <input id="musicPlayer-cur" class="slider" type="range" min="0" max="1000" value="0" oninput="PLUGINS.musicPlayer.onCurChange(this.value)">
+
+    <button id="musicPlayer-loop" onclick="PLUGINS.musicPlayer.onLoop()">Loop</button>
     <button id="musicPlayer-hide" onclick="PLUGINS.musicPlayer.hide()">Hide</button>
 </div>
