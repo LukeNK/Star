@@ -11,6 +11,7 @@
             'ogg'
         ],
         curAudio: undefined,
+        isLoop: false,
         msg: 'Playing ',
         open: (event, item, itemObj, isFolder) => {
             if (!PLUGINS.musicPlayer.curAudio)
@@ -31,7 +32,8 @@
                     dur = PLUGINS.musicPlayer.curAudio.duration;
                 if (cur == dur) clearInterval(PLUGINS.musicPlayer.curInterval);
                 document.getElementById('musicPlayer-cur').value = 1000 * cur / dur; // 1000, not 100
-                document.getElementById('musicPlayer-button').innerHTML = `${PLUGINS.musicPlayer.msg}${parseInt(cur/60)}:${parseInt(cur % 60)}`;
+                document.getElementById('musicPlayer-button').innerHTML = `${PLUGINS.musicPlayer.msg + parseInt(cur/60)}:${parseInt(cur % 60)}`;
+                PLUGINS.musicPlayer.curAudio.loop = PLUGINS.musicPlayer.isLoop;
             }, 500)
         },
         show: (event) => {
@@ -56,7 +58,8 @@
         curInterval: undefined,
         onLoop: () => {
             PLUGINS.musicPlayer.curAudio.loop = !PLUGINS.musicPlayer.curAudio.loop;
-            if (PLUGINS.musicPlayer.curAudio.loop) { PLUGINS.musicPlayer.msg = 'Loop ' } else PLUGINS.musicPlayer.msg = 'Playing '
+            if (PLUGINS.musicPlayer.curAudio.loop) { PLUGINS.musicPlayer.msg = 'Loop ' } else PLUGINS.musicPlayer.msg = 'Playing ';
+            PLUGINS.musicPlayer.isLoop = PLUGINS.musicPlayer.curAudio.loop;
         }
     }
     for (let ext of PLUGINS.musicPlayer.ext)
