@@ -44,6 +44,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] Folder visualizer
 [ ] Custom installer
 [ ] Plugin manager
+[ ] Draw icons
 
 # Done
 [x] Copy plugin folder into the install folder. !DO NOT BUILD IF NOT RESOLVE THIS!

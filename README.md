@@ -2,7 +2,7 @@
 A ~~cross-platform~~ file manager focus on simple design but feature-rich. Currently in active development. Version `1.x` means release still in development. 
 
 ## Usage
-Right now, it can only display files, folders and allow you to open files with default app. Delete, move, copy feature for folder will be add soon.
+Right now, it can only display files, folders and allow you to open files with default app. There is currently 2 intergrated plugins: a text editor (`txtEdit`) and music player (`musicPlayer`).
 
 ### How to use
 Primary click to open file/folder, secondary click to highlight (select) file. Noted that left hand also supported (because I am left handed ^^).
@@ -14,9 +14,11 @@ Plugin are currently in development, which in future will have documentation and
 ## Screenshots
 ### Version `1.2.0` teaser image
 The main screen
-![alt text](https://cdn.discordapp.com/attachments/851724380626485269/851724489326067722/unknown.png)
+![Main](https://cdn.discordapp.com/attachments/851724380626485269/851724489326067722/unknown.png)
 Integrated editor
-![alt text](https://cdn.discordapp.com/attachments/851724380626485269/851738072584421416/unknown.png)
+![txtEditor](https://cdn.discordapp.com/attachments/851724380626485269/851738072584421416/unknown.png)
+Intergrated music player with it's bottomBar shortcut
+![musicPlayer](https://cdn.discordapp.com/attachments/851724380626485269/854282083663609875/unknown.png)
 ### Version `1.0.0` development
 ![1.0.0](https://cdn.discordapp.com/attachments/704502790055133245/808542256427958282/unknown.png)
 
