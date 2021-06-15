@@ -8,9 +8,11 @@ Most of item on this list are from my experience with other file explorer, but y
     [x] Text editor
         [x] Save file
         [x] Fix newline problem where text is higher than the height, the last few line went missing
-    [ ] Music player 
-        [ ] Get files, play 
-        [ ] Custom controls
+    [x] Music player 
+        [x] Get files, play 
+        [x] Custom controls
+        [ ] Playlists
+        [ ] Loop
     [ ] Video player
     [ ] Plugin execute command
     [ ] PLUGIN extention detection
@@ -21,6 +23,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] Auto update dir without breaking highlight system
 [ ] Accept input in `<input id="pathInput">`
 [ ] Test on UNIX filesystem
+[ ] Search for file/folder
 
 # Normal
 [ ] Refresh button 
@@ -37,6 +40,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] JSdoc comments
 [ ] Folder visualizer
 [ ] Custom installer
+[ ] Plugin manager
 
 # Done
 [x] Copy plugin folder into the install folder. !DO NOT BUILD IF NOT RESOLVE THIS!

@@ -10,6 +10,13 @@ postBuild:
 	mv dist/Star* ../build
 	rm dist/* -R
 
+testDir: 
+	-rm test -R
+	-mkdir test
+	echo Hello world > test/a.txt
+	echo toDEL > test/delete.txt
+	echo toMov > test/move.txt
+
 # Windows
 winSetup: 
 	npx electron-builder -w

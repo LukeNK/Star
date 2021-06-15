@@ -41,7 +41,7 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         element.appendChild(button);
     }
     // handle display scoll
-    document.documentElement.scrollTop = 0;
+    document.getElementById('fileList').scrollTop = 0;
 
     // create update interval
     // dirAutoUpdate = setInterval(() => {
