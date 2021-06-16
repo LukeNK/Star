@@ -27,6 +27,11 @@ body {
     background: var(--secondary-1);
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 button {
     cursor: pointer;
     outline: none;
@@ -210,14 +215,16 @@ textarea:focus {
     margin-top: 0px;
 }
 
-#fileList button {
+#fileList a {
+    display: inline-block;
     width: 100%;
-    min-height: 1.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
     font-size: 16px;
     padding-left: 0.5em;
 }
 
-#fileList button:hover {
+#fileList a:hover {
     /* Due to unknown bug reason, background will be update using function in api.js */
     background-color: var(--primary-2-5);
 }

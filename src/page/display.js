@@ -15,6 +15,20 @@ function contentUpdate() {
     sendData('getDirContent', currentDirectory.path);
 }
 
+function clickItem(event, item, itemObj, isFolder) {
+    // highligh item pre-process
+    document.onmouseup = (ev) => {
+        clearListener();
+        highlightItem(event, item, itemObj, isFolder);
+    }
+    document.onmousemove = clearListener; // Need to change for less sensitive
+
+    function clearListener() {
+        document.onmouseup = null;
+        document.onmousemove = null; // clear self
+    }
+}
+
 function highlightItem(event, item, itemObj, isFolder) {
     if (event && event.button == 0 && item && isFolder) {
         // if folder and main click
@@ -33,14 +47,15 @@ function highlightItem(event, item, itemObj, isFolder) {
         if (PLUGINEXT[extname(item)] != undefined) {
             try {
                 PLUGINEXT[extname(item)](event, item, itemObj, isFolder);
+                return;
             } catch (err) {
                 console.log('Plugin error');
                 console.log(err);
             }
-            return
+        } else {
+            // no plugin
+            shell.openPath(path.join(currentDirectory.path, item));
         }
-        let cdPath = currentDirectory.path;
-        shell.openPath(path.join(cdPath, item));
     }
     if (event.button != 2) return
     let b = false;
@@ -81,6 +96,15 @@ function pasteAction(action) {
     }
     channel = 'do' + channel;
     sendData(channel, clipboard);
+}
+
+function renameAction(inp) {
+    if (!inp) {
+
+        return
+    }
+    let file = highlightedItems[highlightedItems.length - 1];
+    if (!file) return;
 }
 
 function deleteAction() {

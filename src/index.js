@@ -116,6 +116,16 @@ ipcMain.on('doMove', (event, files) => {
     }
 });
 
+ipcMain.on('doRename', (event, file, name) => {
+    file = path.resolve(user.path, file);
+    name = path.resolve(user.path, name);
+    fs.rename(file, name, (err) => {
+        listDirectory(user.path, (files, fType) => {
+            win.webContents.send('sendDirContent', files, fType)
+        })
+    })
+});
+
 ipcMain.on('doDelete', (event, files) => {
     let callTime = files.length;
     for (let file of files)
