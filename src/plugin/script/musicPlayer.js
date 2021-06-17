@@ -58,7 +58,10 @@
         curInterval: undefined,
         onLoop: () => {
             PLUGINS.musicPlayer.curAudio.loop = !PLUGINS.musicPlayer.curAudio.loop;
-            if (PLUGINS.musicPlayer.curAudio.loop) { PLUGINS.musicPlayer.msg = 'Loop ' } else PLUGINS.musicPlayer.msg = 'Playing ';
+            if (PLUGINS.musicPlayer.curAudio.loop) {
+                PLUGINS.musicPlayer.msg = 'Loop '
+            } else
+                PLUGINS.musicPlayer.msg = 'Playing ';
             PLUGINS.musicPlayer.isLoop = PLUGINS.musicPlayer.curAudio.loop;
         }
     }
