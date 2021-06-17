@@ -3,7 +3,8 @@ const path = require('path');
 
 //#region Global variables
 let currentDirectory = {
-    path: path.resolve('./') // current user directory (absolute)
+    path: path.resolve('./'), // current user directory (absolute)
+    viewMode: 'l' // how files will be display; l: list, i: icons;
 }
 let highlightedItems = []; // items that was highlighted with secondary click
 let clipboard = [], // store items with absolute path

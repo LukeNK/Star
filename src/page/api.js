@@ -24,7 +24,13 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     element.innerHTML = ''; // clear content
     let l1 = 0;
     for (; l1 < message.length; l1++) {
-        let button = document.createElement('a');
+        let button = document.createElement('a'); // Link look like a button
+        if (currentDirectory.viewMode == 'i') {
+            // icon display
+            button.style.width = '5em';
+            //button.style.height = '5em';
+            button.style.overflowWrap = 'break-word';
+        }
         button.innerHTML = message[l1];
         button.setAttribute('href', path.join(currentDirectory.path, message[l1]));
         button.setAttribute('onclick', 'return false;'); // cancel out href

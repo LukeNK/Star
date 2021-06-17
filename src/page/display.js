@@ -29,6 +29,7 @@ function clickItem(event, item, itemObj, isFolder) {
     }
 }
 
+// TODO: rewrite this function for better code readability
 function highlightItem(event, item, itemObj, isFolder) {
     if (event && event.button == 0 && item && isFolder) {
         // if folder and main click

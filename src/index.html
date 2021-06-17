@@ -45,8 +45,13 @@
     </div>
     <div id="bottomBar">
         <img id="clipboardStatus" src="./page/clipboardNone.png">
+        <button id="viewModeStatus" onclick="document.getElementById('viewModeChanger').style.display = 'block'">View</button>
     </div>
 </body>
+<div id="viewModeChanger" onclick="this.style.display = ''">
+    <button onclick="currentDirectory.viewMode = 'l'; contentUpdate()">List</button>
+    <button onclick="currentDirectory.viewMode = 'i'; contentUpdate()">Icon</button>
+</div>
 <script>
     sendData('getPluginList');
 </script>

@@ -251,6 +251,20 @@ textarea:focus {
     max-height: 1em;
 }
 
+#viewModeStatus {
+    float: right;
+}
+
+
+/*Hidden menus */
+
+#viewModeChanger {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 10vh;
+}
+
 
 /*class*/
 
