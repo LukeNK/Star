@@ -39,7 +39,7 @@ Again, thank you for making and using this project, and reading my broken Englis
 **NodeJS are required to run/build the app (you can download it from [here](https://nodejs.dev/))** \
 After installing NodeJS, start by installing dependencies with `npm i` in `src` directory (`cd ./src`), then run `npm run start`. For Visual Studio Code users, you can simply press `F5` to start running the app. 
 ### Build
-You can build both portable and setup by `make win`. If you want to make setup by `make winSetup` or `make winPort` for portable version. For manual build or people who love to make life harder, remember `user/lastSessionPath` is the folder when user first open the app (or the first folder to appear in portable version).
+You can build both portable and setup by `make win`. If you want to make setup by `make winSetup` or `make winPort` for portable version. 
 
 ## Channel naming
 Each data channel have prefix get/send. `get` is from renderer to main, `send` is from main to renderer, and as an respond for `get`. \
