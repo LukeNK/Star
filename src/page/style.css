@@ -43,6 +43,10 @@ button {
     -webkit-app-region: no-drag;
 }
 
+button:hover {
+    background-color: var(--primary-2-5);
+}
+
 hr {
     margin: 2px;
     border-top: 1px solid var(--secondary-2);
@@ -261,7 +265,7 @@ textarea:focus {
 #viewModeChanger {
     display: none;
     position: fixed;
-    right: 0;
+    right: 0.5em;
     bottom: 10vh;
 }
 

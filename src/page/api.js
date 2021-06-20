@@ -58,7 +58,7 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
         let button = document.createElement('a'); // Link look like a button
         if (currentDirectory.viewMode == 'i') {
             // icon display
-            button.style.width = '5em';
+            button.style.width = '14vw';
             //button.style.height = '5em';
             button.style.overflowWrap = 'break-word';
         }
