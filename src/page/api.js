@@ -6,6 +6,7 @@ const path = require('path');
 //#region Global variables
 let currentDirectory = {
     path: path.resolve('./'), // current user directory (absolute)
+    files: [], // List of file name
     viewMode: 'l' // how files will be display; l: list, i: icons;
 }
 let highlightedItems = []; // items that was highlighted with secondary click
@@ -55,6 +56,9 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
     element.innerHTML = ''; // clear content
     let l1 = 0;
     for (; l1 < message.length; l1++) {
+        currentDirectory.files.push(message[l1]); // add element to file index
+
+        // create buttons
         let button = document.createElement('a'); // Link look like a button
         if (currentDirectory.viewMode == 'i') {
             // icon display
@@ -69,11 +73,11 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
             // if error
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
-            button.setAttribute('onmousedown', `return clickItem(event, this.innerHTML, this);`);
+            button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this);`);
         } else if (fType[l1] == 'd') {
             //id directory
             button.style.color = 'var(--secondary-1)';
-            button.setAttribute('onmousedown', `return clickItem(event, this.innerHTML, this, true)`);
+            button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this, true)`);
         };
         let element = document.getElementById('fileList');
         element.appendChild(button);
