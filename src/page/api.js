@@ -30,12 +30,12 @@ ipcRenderer.on('sendDirContent', (event, message, fType) => {
             // if error
             button.style.color = 'var(--attention)'
         } else if (fType[l1] == 'f') {
-            button.setAttribute('onmousedown', `highlightItem(event, this.innerHTML, this);`);
+            button.setAttribute('onmousedown', `highlightItem(event, encodeURIComponent(this.innerHTML.replace(/&amp;/g, "&")), this);`);
             //button.setAttribute('onclick', `shell.openPath('${cdPath + ((cdPath== '/') ? '' : '/') + message[l1]}')`); // edit this for cross-platform
         } else if (fType[l1] == 'd') {
             //id directory
             button.style.color = 'var(--secondary-1)';
-            button.setAttribute('onmousedown', `highlightItem(event, this.innerHTML, this, true)`);
+            button.setAttribute('onmousedown', `highlightItem(event, encodeURIComponent(this.innerHTML.replace(/&amp;/g, "&")), this, true)`);
         };
         let element = document.getElementById('fileList');
         element.appendChild(button);
