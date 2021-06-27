@@ -13,19 +13,68 @@ let highlightedItems = []; // items that was highlighted with secondary click
 let clipboard = [], // store items with absolute path
     currentAction = ''; // c: copy, x: cut (move);
 let activatingApp = ''; // if there is an integrated app opening an exention
-let PLUGINS = {}; // plugin array for plugins to add scripts and data
+let PLUGINS = {
+    API: {
+        sendDirContent: [
+            (event, message, fType) => {
+                let cdPath = currentDirectory.path;
+                // try {
+                //     clearInterval(dirAutoUpdate); // remove interval
+                // } catch (err) {}
+
+                // buttons
+                document.getElementById('navInActive').innerHTML =
+                    path.basename(path.dirname(currentDirectory.path));
+                document.getElementById('navActive').innerHTML = path.basename(cdPath);
+                document.getElementById('pathInput').value = cdPath;
+
+                // fileList
+                let element = document.getElementById('fileList');
+                element.innerHTML = ''; // clear content
+                currentDirectory.files = [];
+                let l1 = 0;
+                for (; l1 < message.length; l1++) {
+                    currentDirectory.files.push(message[l1]); // add element to file index
+
+                    // create buttons
+                    let button = document.createElement('a'); // Link look like a button
+                    if (currentDirectory.viewMode == 'i') {
+                        // icon display
+                        button.style.width = '14vw';
+                        //button.style.height = '5em';
+                        button.style.overflowWrap = 'break-word';
+                    }
+                    button.innerHTML = message[l1];
+                    button.setAttribute('href', path.join(currentDirectory.path, message[l1]));
+                    button.setAttribute('onclick', 'return false;'); // cancel out href
+                    if (fType[l1] == 'e') {
+                        // if error
+                        button.style.color = 'var(--attention)'
+                    } else if (fType[l1] == 'f') {
+                        button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this);`);
+                    } else if (fType[l1] == 'd') {
+                        // if directory
+                        button.style.color = 'var(--secondary-1)';
+                        button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this, true)`);
+                    };
+                    let element = document.getElementById('fileList');
+                    element.appendChild(button);
+                }
+                // handle display scoll
+                document.getElementById('fileList').scrollTop = 0;
+
+                // create update interval
+                // dirAutoUpdate = setInterval(() => {
+                //     sendData('getDirContent', currentDirectory.path)
+                // }, 2000)
+            },
+        ]
+    }
+}; // plugin array for plugins to add scripts and data
 let PLUGINEXT = {}; // plugin exention array
 //#endregion
 
 //#region Utils
-Array.prototype.remove = function(item) {
-    // remove every item in an array
-    let index = (this.indexOf(item) != -1) ? this.indexOf(item) : -1;
-    do {
-        this.splice(index, 1);
-        index = this.indexOf(item);
-    } while (index != -1);
-}
 
 function extname(loc) {
     loc = path.extname(loc);
@@ -36,59 +85,12 @@ function extname(loc) {
 //#region Channel communication
 ipcRenderer.on('sendCurrentDir', (event, loc) => {
     currentDirectory.path = loc;
-    contentUpdate();
+    sendData('getDirContent', currentDirectory.path);
 });
 
 ipcRenderer.on('sendDirContent', (event, message, fType) => {
-    let cdPath = currentDirectory.path;
-    // try {
-    //     clearInterval(dirAutoUpdate); // remove interval
-    // } catch (err) {}
-
-    // buttons
-    document.getElementById('navInActive').innerHTML =
-        path.basename(path.dirname(currentDirectory.path));
-    document.getElementById('navActive').innerHTML = path.basename(cdPath);
-    document.getElementById('pathInput').value = cdPath;
-
-    // fileList
-    let element = document.getElementById('fileList');
-    element.innerHTML = ''; // clear content
-    let l1 = 0;
-    for (; l1 < message.length; l1++) {
-        currentDirectory.files.push(message[l1]); // add element to file index
-
-        // create buttons
-        let button = document.createElement('a'); // Link look like a button
-        if (currentDirectory.viewMode == 'i') {
-            // icon display
-            button.style.width = '14vw';
-            //button.style.height = '5em';
-            button.style.overflowWrap = 'break-word';
-        }
-        button.innerHTML = message[l1];
-        button.setAttribute('href', path.join(currentDirectory.path, message[l1]));
-        button.setAttribute('onclick', 'return false;'); // cancel out href
-        if (fType[l1] == 'e') {
-            // if error
-            button.style.color = 'var(--attention)'
-        } else if (fType[l1] == 'f') {
-            button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this);`);
-        } else if (fType[l1] == 'd') {
-            //id directory
-            button.style.color = 'var(--secondary-1)';
-            button.setAttribute('onmousedown', `return clickItem(event, currentDirectory.files[${l1}], this, true)`);
-        };
-        let element = document.getElementById('fileList');
-        element.appendChild(button);
-    }
-    // handle display scoll
-    document.getElementById('fileList').scrollTop = 0;
-
-    // create update interval
-    // dirAutoUpdate = setInterval(() => {
-    //     sendData('getDirContent', currentDirectory.path)
-    // }, 2000)
+    for (const func in PLUGINS.API.sendDirContent)
+        PLUGINS.API.sendDirContent[func](event, message, fType);
 });
 
 ipcRenderer.on('sendFileContent', (event, content) => {
@@ -136,7 +138,7 @@ let sendData = ipcRenderer.send;
 //#region App functions
 function goUpPath() { //go __back__ (..)
     currentDirectory.path = path.dirname(currentDirectory.path);
-    contentUpdate();
+    sendData('getDirContent', currentDirectory.path);
 }
 
 /**
@@ -145,10 +147,6 @@ function goUpPath() { //go __back__ (..)
  */
 function goDownPath(loc) { //go __into__ child folder
     currentDirectory.path = path.join(currentDirectory.path, loc);
-    contentUpdate();
-}
-
-function contentUpdate() {
     sendData('getDirContent', currentDirectory.path);
 }
 
@@ -165,11 +163,16 @@ function clickItem(event, item, itemObj, isFolder) {
         clearListener();
         highlightItem(event, item, itemObj, isFolder);
     }
+    document.onmousemovetime = 10;
     document.onmousemove = clearListener; // Need to change for less sensitive
 
     function clearListener() {
-        document.onmouseup = null;
-        document.onmousemove = null; // clear self
+        document.onmousemovetime--;
+        if (document.onmousemovetime) {
+            document.onmouseup = null;
+            document.onmousemove = null; // clear self
+            document.onmousemovetime = undefined;
+        }
     }
 }
 

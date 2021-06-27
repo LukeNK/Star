@@ -1,6 +1,5 @@
 <style>
-    #musicPlayer,
-    #musicPlayer-playlist {
+    #musicPlayer {
         display: none;
         position: fixed;
         width: 20vw;
@@ -34,6 +33,27 @@
     #musicPlayer-hide:hover {
         background-color: var(--attention) !important;
     }
+    
+    #musicPlayer--main {
+        display: none;
+        position: fixed;
+        top: 2em;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 2em);
+        background-color: var(--primary-1);
+    }
+    
+    #musicPlayer--ctrl {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    #musicPlayer--cur {
+        margin: 0;
+    }
 </style>
 <div id="musicPlayer">
     <button onclick="PLUGINS.musicPlayer.curAudio.play()">Play</button>
@@ -44,5 +64,13 @@
     <input id="musicPlayer-cur" class="slider" type="range" min="0" max="1000" value="0" oninput="PLUGINS.musicPlayer.onCurChange(this.value)">
 
     <button id="musicPlayer-loop" onclick="PLUGINS.musicPlayer.onLoop()">Loop</button>
+    <button id="musicPlayer-list" onclick="PLUGINS.musicPlayer.list()">List</button>
     <button id="musicPlayer-hide" onclick="PLUGINS.musicPlayer.hide()">Hide</button>
+</div>
+<div id="musicPlayer--main">
+    <div id="musicPlayer--list"></div>
+    <div id="musicPlayer--ctrl">
+        <input id="musicPlayer--cur" class="slider" type="range" min="0" max="1000" value="0" oninput="PLUGINS.musicPlayer.onCurChange(this.value)">
+        <button onclick="(PLUGINS.musicPlayer.curAudio.paused) ? PLUGINS.musicPlayer.curAudio.play() : PLUGINS.musicPlayer.curAudio.pause()">P</button>
+    </div>
 </div>

@@ -19,7 +19,7 @@
             document.body.style.overflowY = 'hidden';
         },
         close: () => {
-            document.getElementById('txtEditor').style.display = 'none';
+            document.getElementById('txtEditor').style.display = '';
             document.getElementById('topBar').style.left = '';
             document.getElementById('topBar').style.width = '';
             document.getElementById('navigationBar').style.visibility = '';

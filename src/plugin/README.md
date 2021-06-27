@@ -28,6 +28,17 @@ function outputConsole() {
 outputConsole(); // <-- Call the function
 ```
 
+## `PLUGINS.API`
+This is an object that have properties are array of function that each plugin pushed into. \
+For example, if you want a function run when a dirrectory content was sent, you can do this in your init script:
+```js
+PLUGINS.API.sendDirContent.push((event, message, fType) => {
+    // do something
+})
+```
+### Available properties
+- sendDirContent (event, ):
+
 # Templates
 Script file
 ```js

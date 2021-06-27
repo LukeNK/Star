@@ -14,6 +14,7 @@ Most of item on this list are from my experience with other file explorer, but y
         [x] Custom controls
         [ ] Playlists
         [ ] Loop
+        [ ] Icons
     [ ] Video player
     [ ] Plugin execute command
     [ ] PLUGIN extention detection
@@ -28,6 +29,7 @@ Most of item on this list are from my experience with other file explorer, but y
 [ ] Search for file/folder
 [ ] Edit API to expose features to plugins
     [ ] Allow edit and read plugin for an exention
+[ ] Fix problem when in root folder or 1 folder down root (navInActive and nacActive)
 
 # Normal
 [ ] Change everything to promise instead of async
