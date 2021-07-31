@@ -102,7 +102,7 @@
                 }
             if (!matched) continue;
 
-            document.getElementById('musicPlayer--list').innerHTML += `<p>${file}</p>`
+            document.getElementById('musicPlayer--list').innerHTML += `<button style="width:100%">${file}</button>`
         }
     })
 

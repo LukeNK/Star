@@ -2,7 +2,8 @@
     /*Background color*/
     --background-color: rgba(11, 19, 43, 0.75);
     /*Main view color (Navigation bar)*/
-    --primary-1: rgba(28, 37, 65, 0.5);
+    --primary-1: rgba(28, 37, 65, 1);
+    --primary-1-5: rgba(28, 37, 65, 0.5);
     /*Hover color*/
     --primary-2: #3a506bff;
     --primary-2-5: rgba(58, 80, 107, 0.5);

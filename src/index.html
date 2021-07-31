@@ -25,7 +25,7 @@
                 <a onclick="currentAction = 'c'; addToClipboard()">Copy</a>
                 <a onclick="currentAction = 'x'; addToClipboard()">Cut</a>
                 <a id="actPaste" style="display: none;" onclick="pasteAction()">Paste</a>
-                <a>Rename</a>
+                <a onclick="renameAction(false)">Rename</a>
                 <a style="background-color: var(--attention);" onclick="deleteAction()">Delete</a>
             </li>
         </ul>
@@ -49,6 +49,11 @@
 <div id="viewModeChanger" onclick="this.style.display = ''">
     <button onclick="currentDirectory.viewMode = 'l'; sendData('getDirContent', currentDirectory.path);">List</button>
     <button onclick="currentDirectory.viewMode = 'i'; sendData('getDirContent', currentDirectory.path);">Icon</button>
+</div>
+<div id="renamePopup">
+    <p>Rename <span id="renamePopup-file"></span> to:</p>
+    <input id="renamePopup-in" value="new name">
+    <button onclick="renameAction(true)">Rename</button>
 </div>
 <script>
     sendData('getPluginList');

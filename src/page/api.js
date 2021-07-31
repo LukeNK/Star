@@ -70,7 +70,8 @@ let PLUGINS = {
             },
         ]
     }
-}; // plugin array for plugins to add scripts and data
+};
+// plugin array for plugins to add scripts and data
 let PLUGINEXT = {}; // plugin exention array
 //#endregion
 
@@ -256,13 +257,28 @@ function pasteAction(action) {
     sendData(channel, clipboard);
 }
 
+/**
+ * Take the lastest highlighted file then show popup/rename
+ * @param {boolean} inp False for popup, true for doing actual rename
+ */
 function renameAction(inp) {
     if (!inp) {
-
+        // Open popup
+        if (highlightedItems.length == 0) return;
+        let old = highlightedItems[highlightedItems.length - 1];
+        document.getElementById('renamePopup-file').innerHTML =
+            document.getElementById('renamePopup-in').value = old;
+        document.getElementById('renamePopup').style.display = 'block';
         return
+    } else {
+        // Rename
+        sendData('doRename',
+            document.getElementById('renamePopup-file').innerHTML,
+            document.getElementById('renamePopup-in').value
+        )
+        document.getElementById('renamePopup').style.display =
+            document.getElementById('renamePopup-in').value = '';
     }
-    let file = highlightedItems[highlightedItems.length - 1];
-    if (!file) return;
 }
 
 /**

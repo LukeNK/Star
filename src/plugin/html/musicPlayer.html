@@ -4,7 +4,7 @@
         position: fixed;
         width: 20vw;
         backdrop-filter: blur(6px);
-        background-color: var(--primary-1);
+        background-color: var(--primary-1-5);
     }
     
     #musicPlayer button {
@@ -41,7 +41,13 @@
         left: 0;
         width: 100%;
         height: calc(100% - 2em);
-        background-color: var(--primary-1);
+        background-color: var(--primary-1-5);
+        overflow-y: scroll;
+    }
+    
+    #musicPlayer--list {
+        padding-bottom: 3.25em;
+        overflow-y: visible;
     }
     
     #musicPlayer--ctrl {
@@ -49,6 +55,8 @@
         left: 0;
         bottom: 0;
         width: 100%;
+        height: 3em;
+        background-color: var(--primary-1);
     }
     
     #musicPlayer--cur {
@@ -71,6 +79,6 @@
     <div id="musicPlayer--list"></div>
     <div id="musicPlayer--ctrl">
         <input id="musicPlayer--cur" class="slider" type="range" min="0" max="1000" value="0" oninput="PLUGINS.musicPlayer.onCurChange(this.value)">
-        <button onclick="(PLUGINS.musicPlayer.curAudio.paused) ? PLUGINS.musicPlayer.curAudio.play() : PLUGINS.musicPlayer.curAudio.pause()">P</button>
+        <button onclick="(PLUGINS.musicPlayer.curAudio.paused) ? PLUGINS.musicPlayer.curAudio.play() : PLUGINS.musicPlayer.curAudio.pause()">Pause</button>
     </div>
 </div>
